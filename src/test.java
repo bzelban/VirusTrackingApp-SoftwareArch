@@ -6,7 +6,7 @@ interface a
 
 interface b extends a
 {
-    
+
 }
 
 
