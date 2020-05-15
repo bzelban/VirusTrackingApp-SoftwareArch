@@ -8,17 +8,6 @@
 
 
 
-interface a {
-
-}
-
-
-interface b extends a
-{
-
-}
-
-
 public class test {
 
     public static void main(String[] args) {
