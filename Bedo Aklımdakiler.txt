@@ -1,0 +1,8 @@
+telefonları üreticez, factory
+kişinin envanterine eklicez,
+kişileri hasta edicez
+telefonunda modeline (adapter) göre uygulamayı bir kere yüklicez(singleton)
+zamanı kaydedicez, bildirim göndericez
+kişi bilgileri girerince, anomalileri observe edicez. 
+Composite ile önemli listeleri alıcaz
+
