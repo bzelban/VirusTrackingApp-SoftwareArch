@@ -8,9 +8,9 @@
 
 
 
-public class test {
+public class virus_track_main {
 
-    public static void main(String[] args) {
+    public static void virus_track_main(String[] args) {
 
         System.out.println("git test");
 
