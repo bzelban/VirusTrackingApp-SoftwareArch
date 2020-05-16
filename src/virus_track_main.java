@@ -144,7 +144,33 @@ class Apple_VirusTrackApp extends RawVirusTrackApp implements NativeFramework {
 
     }
 
-    public write()
+    public write() //Write Pushlayacak
+    {
+
+    }
+
+
+}
+
+class Samsung_VirusTrackApp extends RawVirusTrackApp implements NativeFramework {
+
+
+    @Override
+    public MobileApp buildForApple() {
+        return getApp("Virus Tracking App", "Android");
+    }
+
+    @Override
+    public MobileApp buildForAndroid() {
+        return null;
+    }
+
+    public get()
+    {
+
+    }
+
+    public set() //Write Pushlayacak
     {
 
     }
