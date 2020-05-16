@@ -108,8 +108,6 @@ class MobileApp { //Volt-like
         this.platform = platform;
         System.out.println(appName + " is Created for " + platform + " phone");
         return new MobileApp(appName, platform);
-
-
     }
 
 }
