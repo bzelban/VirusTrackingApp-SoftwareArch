@@ -112,14 +112,16 @@ public class virus_track_main {
         //Need Plots
 
         //Prologue
-        //Meanwhile in Netherland.
+        //Meanwhile in Netherland
 
 
-        //Act 1, Baking and Serving.
+        //Act 1, Baking and Serving
+        //Consumer will buy some phones
         System.out.println("BestBuy Selling Samsung and Apple");
 
 
         //Act 2, Uvid-Strikes-Back
+        //Ill people installing app on phone
 
 
         //Act 3, Health Ministry On Duty
