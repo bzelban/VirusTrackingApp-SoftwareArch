@@ -8,6 +8,7 @@
 
 // THE FACTORY
 // In here, 2 different factories creating specific phones.
+// TO-DO: Add Storage!
 
 abstract class CellPhone {
     abstract public String displayBrand();
@@ -36,7 +37,7 @@ class ApplePhone extends CellPhone{
 
 }
 
- abstract class AppleFactory {
+abstract class AppleFactory {
     public static CellPhone createApple(String brand, String model)
     {
        if ("Apple".equalsIgnoreCase(brand))
@@ -90,19 +91,66 @@ abstract class SamsungFactory{
 ////////////////////////////////////////////////////////////////////////////////////
 
 // The RawAppInc.
-// This part ports Raw Native Virus Track app to the specific phone
+// This part ports Raw Native Virus Track app to the specific phone also for d Admins
 
-class RawVirusTrack {
-    private String name = "Virus Tracking App";
-    public String getName(){ return name;}
+class MobileApp { //Volt-like
+    private String appName; //Currently VirusTracking app
+    private String platform; //iOS or Android
 
-    public RawVirusTrack()
-    {
-        return new RawVirusTrack("Virus Tracking App");
+    public MobileApp(String appName, String platform) {
+        this.appName = appName;
+        this.platform = platform;
+    }
+
+    public void getApp(String appName, String platform) {
+
+        this.appName = appName;
+        this.platform = platform;
+
+        System.out.println(appName + " is Created for " + platform + " phone");
     }
 
 }
 
+class RawVirusTrackApp{ //Socket-like
+
+    public MobileApp rawApp(){
+        return new MobileApp("null", "null");
+    }
+
+}
+
+interface NativeFramework{ //SocketAdapter-like
+    MobileApp buildForApple();
+    MobileApp buildForAndroid();
+
+}
+
+class Apple_VirusTrackApp extends RawVirusTrackApp implements NativeFramework {
+
+
+    @Override
+    public MobileApp buildForApple() {
+        return getApp("Virus Tracking App", "iOS");
+    }
+
+    @Override
+    public MobileApp buildForAndroid() {
+        return null;
+    }
+
+    public read()
+    {
+
+    }
+
+    public write()
+    {
+
+    }
+
+
+}
 
 
 
@@ -121,6 +169,7 @@ public class virus_track_main {
         //Factory example here, Need main for User requests.
         CellPhone iPhone = AppleFactory.createApple("Apple", "iPhone 6");
         CellPhone Galaxy = SamsungFactory.createSamsung("Samsung", "Galaxy 5");
+
 
 
         //Need Plots
