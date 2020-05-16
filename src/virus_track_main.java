@@ -178,6 +178,32 @@ class Samsung_VirusTrackApp extends RawVirusTrackApp implements NativeFramework 
 
 }
 
+class Admin_VirusTrackApp extends RawVirusTrackApp implements NativeFramework {
+
+
+    @Override
+    public MobileApp buildForApple() {
+        return getApp("Virus Tracking App", "Android");
+    }
+
+    @Override
+    public MobileApp buildForAndroid() {
+        return null;
+    }
+
+    public receive()
+    {
+
+    }
+
+    public send() //Write Pushlayacak
+    {
+
+    }
+
+
+}
+
 
 
 
