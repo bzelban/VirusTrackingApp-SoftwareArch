@@ -1,8 +1,10 @@
 /*
         Virus Tracking Application
 
-
-
+    Bedirhan Z. ELBAN
+    Berk YILMAZ
+    Mert DOYURGAN
+    H. Tuğgün ASRAK
 
 */
 
