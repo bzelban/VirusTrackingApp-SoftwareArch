@@ -102,12 +102,14 @@ class MobileApp { //Volt-like
         this.platform = platform;
     }
 
-    public void getApp(String appName, String platform) {
+    public Object getApp(String appName, String platform) {
 
         this.appName = appName;
         this.platform = platform;
-
         System.out.println(appName + " is Created for " + platform + " phone");
+        return new MobileApp(appName, platform);
+
+
     }
 
 }
@@ -183,7 +185,7 @@ class Admin_VirusTrackApp extends RawVirusTrackApp implements NativeFramework {
 
     @Override
     public MobileApp buildForApple() {
-        return getApp("Admin Virus Tracking App", "Every");
+        return getApp("Admin Virus Tracking App", "root");
     }
 
     @Override
