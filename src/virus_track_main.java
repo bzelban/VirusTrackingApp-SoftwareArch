@@ -183,7 +183,7 @@ class Admin_VirusTrackApp extends RawVirusTrackApp implements NativeFramework {
 
     @Override
     public MobileApp buildForApple() {
-        return getApp("Virus Tracking App", "Android");
+        return getApp("Admin Virus Tracking App", "Every");
     }
 
     @Override
