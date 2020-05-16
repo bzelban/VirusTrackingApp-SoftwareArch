@@ -36,7 +36,7 @@ class ApplePhone extends CellPhone{
 
 }
 
-abstract class AppleFactory {
+ abstract class AppleFactory {
     public static CellPhone createApple(String brand, String model)
     {
        if ("Apple".equalsIgnoreCase(brand))
@@ -92,6 +92,20 @@ abstract class SamsungFactory{
 // The RawAppInc.
 // This part ports Raw Native Virus Track app to the specific phone
 
+class RawVirusTrack {
+    private String name = "Virus Tracking App";
+    public String getName(){ return name;}
+
+    public RawVirusTrack()
+    {
+        return new RawVirusTrack("Virus Tracking App");
+    }
+
+}
+
+
+
+
 
 
 ///////////////////////////////////////////////////////////////////////////////////
@@ -122,6 +136,8 @@ public class virus_track_main {
 
         //Act 2, Uvid-Strikes-Back
         //Ill people installing app on phone
+        //  sending reports
+
 
 
         //Act 3, Health Ministry On Duty
