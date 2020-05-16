@@ -109,11 +109,22 @@ public class virus_track_main {
         CellPhone Galaxy = SamsungFactory.createSamsung("Samsung", "Galaxy 5");
 
 
+        //Need Plots
+
+        //Prologue
+        //Meanwhile in Netherland.
+
+
+        //Act 1, Baking and Serving.
         System.out.println("BestBuy Selling Samsung and Apple");
 
 
+        //Act 2, Uvid-Strikes-Back
 
-        System.out.println("Ali wants to buy Samsung phone");
+
+        //Act 3, Health Ministry On Duty
+
+
 
 
 
