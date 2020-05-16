@@ -74,7 +74,7 @@ abstract class AppleFactory {
     }
 }
 
-abstract class SamsungFactory{
+ class SamsungFactory{
     public static cellPhone cellPhone(String type, String brand, String mode)
     {
         if("Samsung".equalsIgnoreCase(type))
@@ -97,7 +97,19 @@ public class virus_track_main {
 
     public static void virus_track_main(String[] args) {
 
-        System.out.println("OK boys Let's do this.\n Leroooooyy");
+        //System.out.println("Aight boys Let's do this.\n Leroooooyy JENKIIINNNNNS");
+        cellPhone SamsungPhone = SamsungFactory("Samsung", "Samsung", "Galaxy");
+        cellPhone ApplePhone = AppleFactory("Apple", "Apple", "iPhone");
+
+        System.out.println("BestBuy Selling Samsung and Apple");
+
+
+
+        System.out.println("Ali wants to buy Samsung phone");
+
+
+
+
 
 
 
