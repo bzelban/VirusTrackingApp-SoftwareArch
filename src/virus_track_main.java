@@ -105,6 +105,7 @@ SOCKET ( RawVirus) {}
 import java.util.Scanner;
 
 class MobileApp { //Volt-like (We Need This to install phones)
+
     private String appName; //Currently Template for App
     private String platform; //iOS or Android
 
@@ -265,7 +266,7 @@ public class virus_track_main {
 
         //Act 1, Baking and Serving
         //Consumer will buy some phones
-        System.out.println("BestBuy Selling Samsung and Apple");
+        // System.out.println("BestBuy Selling Samsung and Apple");
 
 
         //Act 2, Uvid-Strikes-Back
