@@ -1,7 +1,7 @@
 Singleton ile telefona yüklencek.. +++
 Adaptör ile uygulamalar (read,send..) oluşturulcak... +++
-Observer ile sorular sorulcak, durumu kontrol edilcek. // 
-Filter pattern ile databasedeki veriler filtrelenicek.
+Observer ile anamoliler check edilicek.// 
+
 adresi iteratorle yap,
 compozit isimler 25-60, 
 otomize facade ile olacak.
