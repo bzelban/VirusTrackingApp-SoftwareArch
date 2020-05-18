@@ -94,22 +94,31 @@ abstract class SamsungFactory{
 ////////////////////////////////////////////////////////////////////////////////////
 */
 
+/*
+VOLT (MobileAPP) {createApp}
+SOCKET ( RawVirus) {}
+
+ */
 
 // The RawAppInc.
 // This part ports Raw Native Virus Track app to the specific phone also for d Admins
-
 import java.util.Scanner;
 
-class MobileApp { //Volt-like
-    private String appName; //Currently VirusTracking app
+class MobileApp { //Volt-like (We Need This to install phones)
+    private String appName; //Currently Template for App
     private String platform; //iOS or Android
+
+    public MobileApp()
+    {
+
+    }
 
     public MobileApp(String appName, String platform) {
         this.appName = appName;
         this.platform = platform;
     }
 
-    public Object createApp(String appName, String platform) {
+    public MobileApp createApp(String appName, String platform) {
 
         this.appName = appName;
         this.platform = platform;
@@ -119,7 +128,7 @@ class MobileApp { //Volt-like
 
 }
 
-class RawVirusTrackApp{ //Socket-like
+class RawVirusTrackApp{ //Socket-like (SOURCE)
 
     String UserNAME;
     String UserSURNAME;
@@ -128,45 +137,45 @@ class RawVirusTrackApp{ //Socket-like
     boolean tempFEWER;
     boolean tempM_ACHE;
     boolean tempR_NOSE;
+    //TO-DO: NEED CLOCK TIME DATE
 
 
-    public MobileApp rawApp(){
+    public static MobileApp rawApp(String appName, String platform){
         return new MobileApp("null", "null");
     }
 
-
-    public void get UserInfo()
-    {
-
-    }
-
 }
 
-interface NativeFramework{ //SocketAdapter-like
+interface NativeFramework{ //SocketAdapter-like (Converter)
     MobileApp buildForApple();
     MobileApp buildForAndroid();
+    MobileApp buildForLibrary();
 
 }
 
-class Apple_VirusTrackApp extends RawVirusTrackApp implements NativeFramework {
-
+// Object Adapter SOCKET-ADAPTER-IMPLEMENTATION-Like
+class Apple_VirusTrackAppBuild extends RawVirusTrackApp implements NativeFramework {
 
     @Override
-    public MobileApp buildForApple() {
-        return createApp("Virus Tracking App", "iOS");
+    public MobileApp buildForApple()
+    {
+        return RawVirusTrackApp.rawApp("Virus Track", "Apple");
     }
 
     @Override
-    public MobileApp buildForAndroid() {
-        return null;
-    }
+    public MobileApp buildForAndroid() {return null;}
+
+    @Override
+    public MobileApp buildForLibrary() {return null;}
 
     public void read()
     {
+
         String temp;
         Scanner sc = new Scanner(System.in);
         System.out.println("Please enter your recent physical conditions");
-        System.out.println("Fewer:? (Y)es or (N)o");
+
+        System.out.println("Fewer?: (Y)es or (N)o");
         temp = sc.next();
         if(temp == "Y" || temp == "y" )
         {
@@ -174,73 +183,59 @@ class Apple_VirusTrackApp extends RawVirusTrackApp implements NativeFramework {
         }
         else if (temp == "N" || temp == "n")
         {
-            
+            tempFEWER = false;
+        }
+        else
+        {
+            System.out.println("Wrong input!");
         }
 
 
+        System.out.println("Muscle Ache?: (Y)es or (N)o");
+        temp = sc.next();
+        if(temp == "Y" || temp == "y" )
+        {
+            tempM_ACHE = true;
+        }
+        else if (temp == "N" || temp == "n")
+        {
+            tempM_ACHE = false;
+        }
+        else
+        {
+            System.out.println("Wrong input!");
+        }
+
+
+        System.out.println("Runny Nose?: (Y)es or (N)o");
+
+        if(temp == "Y" || temp == "y" )
+        {
+            tempR_NOSE = true;
+        }
+        else if (temp == "N" || temp == "n")
+        {
+            tempR_NOSE = false;
+        }
+        else
+        {
+            System.out.println("Wrong input!");
+        }
+
+        System.out.println("Thank You, Stay Safe!");
     }
 
-    public  write() //Write Pushlayacak
+    public void write() //Write Pushlayacak
     {
 
     }
-
 
 }
 
-class Samsung_VirusTrackApp extends RawVirusTrackApp implements NativeFramework {
-
-
-    @Override
-    public MobileApp buildForApple() {
-        return null;
-    }
-
-    @Override
-    public MobileApp buildForAndroid() {
-        return getApp("Virus Tracking App", "Android");
-    }
-
-    public get()
-    {
-
-    }
-
-    public set() //Write Pushlayacak
-    {
-
-    }
-
-
-}
-
-class Library_VirusTrackApp extends RawVirusTrackApp implements NativeFramework {
-
-
-    @Override
-    public MobileApp buildForApple() {
-        return getApp("Admin Virus Tracking App", "root");
-    }
-
-    @Override
-    public MobileApp buildForAndroid() {
-        return null;
-    }
-
-    public receive()
-    {
-
-    }
-
-    public send() //Write Pushlayacak
-    {
-
-    }
-
-
-}
-
-
+//  TO-DO:
+//      Samsung_VirusTrackAppBuild
+//      Library_VirusTrackAppBuild
+//          NEEDED AFTER ADDING CLOCK TIME DATE AND WRITE FUNCTION
 
 ///////////////////////////////////////////////////////////////////////////////////
 
@@ -250,13 +245,17 @@ public class virus_track_main {
 
     public static void main(String[] args) throws InstantiationException, IllegalAccessException {
 
-        //Aight boys Let's do this: Leroooooyy JENKIIINNNNNS!
+        //Aight boys Let's do this
 
         //Factory example here, Need main for User requests.
         //CellPhone iPhone = new AppleFactory.createApple("Apple", "iPhone 6");
         //CellPhone Galaxy = new SamsungFactory.createSamsung("Samsung", "Galaxy 5");
 
 
+        //Adaptor example here, Need main for User Requests.
+        //NativeFramework VTA_Apple = new Apple_VirusTrackAppBuild();
+        //NativeFramework VTA_Samsung = new Samsung_VirusTrackAppBuild();
+        //NativeFramework VTA_Library = new Library_VirusTrackAppBuild();
 
         //Need Plots
 
@@ -277,17 +276,7 @@ public class virus_track_main {
 
         //Act 3, Health Ministry On Duty
 
-
-
-
-
-
-
-
-
-
-
-
-
     }
+
+
 }
