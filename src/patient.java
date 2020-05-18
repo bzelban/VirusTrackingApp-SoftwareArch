@@ -6,22 +6,27 @@ class patient {
     String NAME;
     String SURNAME;
     int AGE;
+    String ADDRESS;
     Boolean FEWER;
     Boolean M_ACHE;
     Boolean R_NOSE;
+
 
     public patient() {
 
     }
 
-    public patient(String NAME, String SURNAME, int AGE, Boolean FEWER, Boolean m_ACHE, Boolean r_NOSE) {
+    public patient(String NAME, String SURNAME, int AGE, String ADDRESS, Boolean FEWER, Boolean m_ACHE, Boolean r_NOSE) {
         this.NAME = NAME;
         this.SURNAME = SURNAME;
         this.AGE = AGE;
+        this.ADDRESS = ADDRESS;
         this.FEWER = FEWER;
         M_ACHE = m_ACHE;
         R_NOSE = r_NOSE;
+
     }
+
 
     public String getNAME() {
         return NAME;
@@ -71,13 +76,19 @@ class patient {
         R_NOSE = r_NOSE;
     }
 
+    public String getADDRESS() {
+        return ADDRESS;
+    }
 
 
-    private ArrayList<patient> _createPatientTable()
-    {
+    public void setADDRESS(String ADDRESS) {
+        this.ADDRESS = ADDRESS;
+    }
+
+    private ArrayList<patient> _createPatientTable() {
 
         ArrayList<patient> patientList = new ArrayList<>();
-        patientList.add(new patient("TEST", "TEST",  99, false, false, false));
+        patientList.add(new patient("TEST", "TEST", 99, "x city, y street, z condo", false, false, false));
 
 
         return patientList;
@@ -85,13 +96,13 @@ class patient {
 
 
     public String toString(patient x) {
-        String print=x.getNAME() +"  "+  x.getSURNAME() +" Age: "+ x.getAGE() +" Fewer?: "+ x.getFEWER() + " Muscle Ache?: "+ x.getM_ACHE() + " Runny Nose?:" + x.getR_NOSE();
+        String print = x.getNAME() + "  " + x.getSURNAME() + " Age: " + x.getAGE() + + " Adress: " + x.getADDRESS() +  " Fewer?: " + x.getFEWER() + " Muscle Ache?: " + x.getM_ACHE() + " Runny Nose?:" + x.getR_NOSE();
         return print;
     }
 
-    public void print(ArrayList<patient> patientTable){
+    public void print(ArrayList<patient> patientTable) {
 
-        for(int i =0; i<patientTable.size(); i++){
+        for (int i = 0; i < patientTable.size(); i++) {
             System.out.println(toString(patientTable.get(i)));
         }
     }

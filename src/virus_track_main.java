@@ -7,11 +7,11 @@
     H. Tuğgün ASRAK
 
 */
-
+/*
 // THE FACTORY
 // In here, 2 different factories creating specific phones.
 // TO-DO: Add Storage!
-
+// Note: Lecturer doesn't want this part. NEGATIVE!!!
 abstract class CellPhone {
     abstract public String displayBrand();
     abstract public String displayModel();
@@ -91,6 +91,8 @@ abstract class SamsungFactory{
 }
 
 ////////////////////////////////////////////////////////////////////////////////////
+*/
+
 
 // The RawAppInc.
 // This part ports Raw Native Virus Track app to the specific phone also for d Admins
@@ -119,6 +121,8 @@ class RawVirusTrackApp{ //Socket-like
     public MobileApp rawApp(){
         return new MobileApp("null", "null");
     }
+
+
 
 }
 
@@ -159,12 +163,12 @@ class Samsung_VirusTrackApp extends RawVirusTrackApp implements NativeFramework 
 
     @Override
     public MobileApp buildForApple() {
-        return getApp("Virus Tracking App", "Android");
+        return null;
     }
 
     @Override
     public MobileApp buildForAndroid() {
-        return null;
+        return getApp("Virus Tracking App", "Android");
     }
 
     public get()
@@ -208,8 +212,6 @@ class Admin_VirusTrackApp extends RawVirusTrackApp implements NativeFramework {
 
 
 
-
-
 ///////////////////////////////////////////////////////////////////////////////////
 
 
@@ -221,8 +223,8 @@ public class virus_track_main {
         //Aight boys Let's do this: Leroooooyy JENKIIINNNNNS!
 
         //Factory example here, Need main for User requests.
-        CellPhone iPhone = AppleFactory.createApple("Apple", "iPhone 6");
-        CellPhone Galaxy = SamsungFactory.createSamsung("Samsung", "Galaxy 5");
+        //CellPhone iPhone = new AppleFactory.createApple("Apple", "iPhone 6");
+        //CellPhone Galaxy = new SamsungFactory.createSamsung("Samsung", "Galaxy 5");
 
 
 
