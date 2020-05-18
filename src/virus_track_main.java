@@ -98,6 +98,8 @@ abstract class SamsungFactory{
 // The RawAppInc.
 // This part ports Raw Native Virus Track app to the specific phone also for d Admins
 
+import java.util.Scanner;
+
 class MobileApp { //Volt-like
     private String appName; //Currently VirusTracking app
     private String platform; //iOS or Android
@@ -159,12 +161,26 @@ class Apple_VirusTrackApp extends RawVirusTrackApp implements NativeFramework {
         return null;
     }
 
-    public read()
+    public void read()
     {
-        
+        String temp;
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Please enter your recent physical conditions");
+        System.out.println("Fewer:? (Y)es or (N)o");
+        temp = sc.next();
+        if(temp == "Y" || temp == "y" )
+        {
+            tempFEWER = true;
+        }
+        else if (temp == "N" || temp == "n")
+        {
+            
+        }
+
+
     }
 
-    public write() //Write Pushlayacak
+    public  write() //Write Pushlayacak
     {
 
     }
