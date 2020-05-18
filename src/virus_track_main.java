@@ -12,6 +12,7 @@
 // In here, 2 different factories creating specific phones.
 // TO-DO: Add Storage!
 // Note: Lecturer doesn't want this part. NEGATIVE!!!
+
 abstract class CellPhone {
     abstract public String displayBrand();
     abstract public String displayModel();
@@ -106,7 +107,7 @@ class MobileApp { //Volt-like
         this.platform = platform;
     }
 
-    public Object getApp(String appName, String platform) {
+    public Object createApp(String appName, String platform) {
 
         this.appName = appName;
         this.platform = platform;
@@ -118,11 +119,24 @@ class MobileApp { //Volt-like
 
 class RawVirusTrackApp{ //Socket-like
 
+    String UserNAME;
+    String UserSURNAME;
+    int UserAGE;
+    String UserADDRESS;
+    boolean tempFEWER;
+    boolean tempM_ACHE;
+    boolean tempR_NOSE;
+
+
     public MobileApp rawApp(){
         return new MobileApp("null", "null");
     }
 
 
+    public void get UserInfo()
+    {
+
+    }
 
 }
 
@@ -137,7 +151,7 @@ class Apple_VirusTrackApp extends RawVirusTrackApp implements NativeFramework {
 
     @Override
     public MobileApp buildForApple() {
-        return getApp("Virus Tracking App", "iOS");
+        return createApp("Virus Tracking App", "iOS");
     }
 
     @Override
@@ -147,7 +161,7 @@ class Apple_VirusTrackApp extends RawVirusTrackApp implements NativeFramework {
 
     public read()
     {
-
+        
     }
 
     public write() //Write Pushlayacak
@@ -184,7 +198,7 @@ class Samsung_VirusTrackApp extends RawVirusTrackApp implements NativeFramework 
 
 }
 
-class Admin_VirusTrackApp extends RawVirusTrackApp implements NativeFramework {
+class Library_VirusTrackApp extends RawVirusTrackApp implements NativeFramework {
 
 
     @Override

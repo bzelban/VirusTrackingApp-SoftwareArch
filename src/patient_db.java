@@ -1,22 +1,22 @@
 import java.util.ArrayList;
 
 
-class patient {
+class patient_db {
 
     String NAME;
     String SURNAME;
     int AGE;
     String ADDRESS;
-    Boolean FEWER;
-    Boolean M_ACHE;
-    Boolean R_NOSE;
+    boolean FEWER;
+    boolean M_ACHE;
+    boolean R_NOSE;
 
 
-    public patient() {
+    public patient_db() {
 
     }
 
-    public patient(String NAME, String SURNAME, int AGE, String ADDRESS, Boolean FEWER, Boolean m_ACHE, Boolean r_NOSE) {
+    public patient_db(String NAME, String SURNAME, int AGE, String ADDRESS, Boolean FEWER, Boolean m_ACHE, Boolean r_NOSE) {
         this.NAME = NAME;
         this.SURNAME = SURNAME;
         this.AGE = AGE;
@@ -85,25 +85,24 @@ class patient {
         this.ADDRESS = ADDRESS;
     }
 
-    private ArrayList<patient> _createPatientTable() {
+    private ArrayList<patient_db> _createPatientTable() {
 
-        ArrayList<patient> patientList = new ArrayList<>();
-        patientList.add(new patient("TEST", "TEST", 99, "x city, y street, z condo", false, false, false));
+        ArrayList<patient_db> patientDbList = new ArrayList<>();
+        patientDbList.add(new patient_db("TEST", "TEST", 99, "x city, y street, z condo", false, false, false));
 
-
-        return patientList;
+        return patientDbList;
     }
 
 
-    public String toString(patient x) {
+    public String toString(patient_db x) {
         String print = x.getNAME() + "  " + x.getSURNAME() + " Age: " + x.getAGE() + + " Adress: " + x.getADDRESS() +  " Fewer?: " + x.getFEWER() + " Muscle Ache?: " + x.getM_ACHE() + " Runny Nose?:" + x.getR_NOSE();
         return print;
     }
 
-    public void print(ArrayList<patient> patientTable) {
+    public void print(ArrayList<patient_db> patientDbTable) {
 
-        for (int i = 0; i < patientTable.size(); i++) {
-            System.out.println(toString(patientTable.get(i)));
+        for (int i = 0; i < patientDbTable.size(); i++) {
+            System.out.println(toString(patientDbTable.get(i)));
         }
     }
 }
