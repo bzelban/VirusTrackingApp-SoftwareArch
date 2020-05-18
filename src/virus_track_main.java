@@ -7,11 +7,11 @@
     H. Tuğgün ASRAK
 
 */
-
+/*
 // THE FACTORY
 // In here, 2 different factories creating specific phones.
 // TO-DO: Add Storage!
-
+// Note: Lecturer doesn't want this part. NEGATIVE!!!
 abstract class CellPhone {
     abstract public String displayBrand();
     abstract public String displayModel();
@@ -91,6 +91,8 @@ abstract class SamsungFactory{
 }
 
 ////////////////////////////////////////////////////////////////////////////////////
+*/
+
 
 // The RawAppInc.
 // This part ports Raw Native Virus Track app to the specific phone also for d Admins

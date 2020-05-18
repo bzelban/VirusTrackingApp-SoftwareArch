@@ -9,6 +9,7 @@ class patient {
     Boolean FEWER;
     Boolean M_ACHE;
     Boolean R_NOSE;
+    
 
     public patient() {
 
@@ -21,6 +22,7 @@ class patient {
         this.FEWER = FEWER;
         M_ACHE = m_ACHE;
         R_NOSE = r_NOSE;
+        
     }
 
     public String getNAME() {
