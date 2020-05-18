@@ -122,6 +122,8 @@ class RawVirusTrackApp{ //Socket-like
         return new MobileApp("null", "null");
     }
 
+
+
 }
 
 interface NativeFramework{ //SocketAdapter-like
@@ -161,12 +163,12 @@ class Samsung_VirusTrackApp extends RawVirusTrackApp implements NativeFramework 
 
     @Override
     public MobileApp buildForApple() {
-        return getApp("Virus Tracking App", "Android");
+        return null;
     }
 
     @Override
     public MobileApp buildForAndroid() {
-        return null;
+        return getApp("Virus Tracking App", "Android");
     }
 
     public get()
@@ -207,8 +209,6 @@ class Admin_VirusTrackApp extends RawVirusTrackApp implements NativeFramework {
 
 
 }
-
-
 
 
 
