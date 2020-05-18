@@ -223,8 +223,8 @@ public class virus_track_main {
         //Aight boys Let's do this: Leroooooyy JENKIIINNNNNS!
 
         //Factory example here, Need main for User requests.
-        CellPhone iPhone = AppleFactory.createApple("Apple", "iPhone 6");
-        CellPhone Galaxy = SamsungFactory.createSamsung("Samsung", "Galaxy 5");
+        //CellPhone iPhone = new AppleFactory.createApple("Apple", "iPhone 6");
+        //CellPhone Galaxy = new SamsungFactory.createSamsung("Samsung", "Galaxy 5");
 
 
 

@@ -9,7 +9,7 @@ class patient {
     Boolean FEWER;
     Boolean M_ACHE;
     Boolean R_NOSE;
-    
+
 
     public patient() {
 
