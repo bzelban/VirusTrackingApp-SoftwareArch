@@ -101,6 +101,7 @@ abstract class SamsungFactory{
 import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Scanner;
@@ -411,6 +412,26 @@ public class virus_track_main {
         //NativeFramework VTA_Samsung = new Samsung_VirusTrackAppBuild();
         //NativeFramework VTA_Library = new Library_VirusTrackAppBuild();
 
+
+
+
+
+
+
+
+
+        ArrayList<patient_db> patients = patient_db._createDummyTable();
+
+
+
+
+
+
+
+
+        ////////////////////////////////////////////
+        //This part is gibberish
+
         //Need Plots
 
         //Prologue
@@ -419,7 +440,7 @@ public class virus_track_main {
 
         //Act 1, Baking and Serving
         //Consumer will buy some phones
-        // System.out.println("BestBuy Selling Samsung and Apple");
+        //System.out.println("BestBuy Selling Samsung and Apple");
 
 
         //Act 2, Uvid-Strikes-Back
