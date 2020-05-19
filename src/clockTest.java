@@ -1,4 +1,6 @@
 import java.text.DecimalFormat;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.Date;
 import java.text.SimpleDateFormat;
 import java.text.Format;
@@ -32,6 +34,12 @@ public class clockTest {
 
             int diffHours = (int) (diff / (60 * 60 * 1000));
             System.out.println("Difference: " + crucifyFormatter.format(diffHours));
+
+            LocalDate nowDate = LocalDate.now();
+            LocalTime nowTime = LocalTime.now();
+            Date localObj = sdf.parse( nowDate + " " + nowTime );
+
+            System.out.println(localObj);
 
             //For Current
             //Date currentDate = new Date();
