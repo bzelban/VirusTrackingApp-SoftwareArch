@@ -97,7 +97,14 @@ abstract class SamsungFactory{
 
 // The RawAppInc.
 // This part ports Raw Native Virus Track app to the specific phone also for the Library
+
+import java.text.DecimalFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
 
 class MobileApp { //Volt-like
 
@@ -127,20 +134,131 @@ class MobileApp { //Volt-like
 
 class RawVirusTrackApp{ //Socket-like (SOURCE)
 
-    String UserNAME;
-    String UserSURNAME;
-    int UserAGE;
-    String UserADDRESS;
-    boolean tempFEWER;
-    boolean tempM_ACHE;
-    boolean tempR_NOSE;
-    //TO-DO: NEED CLOCK TIME DATE
+    private String UserNAME;
+    private String UserSURNAME;
+    private int UserAGE;
+    private String UserADDRESS;
+    private boolean tempFEWER;
+    private boolean tempM_ACHE;
+    private boolean tempR_NOSE;
 
-
-    public static MobileApp rawApp(String appName, String platform){
-        return new MobileApp("null", "null");
+    public String getUserNAME() {
+        return UserNAME;
     }
 
+    public void setUserNAME(String userNAME) {
+        UserNAME = userNAME;
+    }
+
+    public String getUserSURNAME() {
+        return UserSURNAME;
+    }
+
+    public void setUserSURNAME(String userSURNAME) {
+        UserSURNAME = userSURNAME;
+    }
+
+    public int getUserAGE() {
+        return UserAGE;
+    }
+
+    public void setUserAGE(int userAGE) {
+        UserAGE = userAGE;
+    }
+
+    public String getUserADDRESS() {
+        return UserADDRESS;
+    }
+
+    public void setUserADDRESS(String userADDRESS) {
+        UserADDRESS = userADDRESS;
+    }
+
+    public boolean isTempFEWER() {
+        return tempFEWER;
+    }
+
+    public void setTempFEWER(boolean tempFEWER) {
+        this.tempFEWER = tempFEWER;
+    }
+
+    public boolean isTempM_ACHE() {
+        return tempM_ACHE;
+    }
+
+    public void setTempM_ACHE(boolean tempM_ACHE) {
+        this.tempM_ACHE = tempM_ACHE;
+    }
+
+    public boolean isTempR_NOSE() {
+        return tempR_NOSE;
+    }
+
+    public void setTempR_NOSE(boolean tempR_NOSE) {
+        this.tempR_NOSE = tempR_NOSE;
+    }
+
+    public SimpleDateFormat getSdf() {
+        return sdf;
+    }
+
+    public void setSdf(SimpleDateFormat sdf) {
+        this.sdf = sdf;
+    }
+
+    public Date getOldDate() {
+        return oldDate;
+    }
+
+    public void setOldDate(Date oldDate) {
+        this.oldDate = oldDate;
+    }
+
+    public boolean isClockIntervalCheck() {
+        return clockIntervalCheck;
+    }
+
+    public void setClockIntervalCheck(boolean clockIntervalCheck) {
+        this.clockIntervalCheck = clockIntervalCheck;
+    }
+
+    //TO-DO: NEED CLOCK TIME DATE
+    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy hh:mm");
+    Date oldDate = sdf.parse("01/05/2020" + " " + "20:00");
+
+    RawVirusTrackApp() throws ParseException { } //This default constructor is for Parse
+    boolean clockIntervalCheck = false;
+
+    public void clockFunction(Date oldDate) throws InterruptedException
+    {
+        Date currDate = Calendar.getInstance().getTime();
+
+        DecimalFormat cFormat = new DecimalFormat("###,###");
+
+        long diff = currDate.getTime() - oldDate.getTime();
+        int diffHours = (int) (diff / (60 * 60 * 1000));
+
+        TimeUnit.MINUTES.sleep(5);
+
+        if(diffHours == 2 || diffHours > 2)
+        {
+            System.out.println("You have to enter your status ");
+            this.clockIntervalCheck = true;
+        }
+        else
+        {
+            this.clockIntervalCheck = false;
+        }
+    }
+
+    //Those are going to be overridden by socket-adapter-implementation classes
+    void firstRun() throws InterruptedException {}
+    void autoCheck(){}
+    //
+
+    public static MobileApp rawApp(String appName, String platform){
+        return new MobileApp("rawVirusTrack", "debugOnly");
+    }
 }
 
 interface NativeFramework{ //SocketAdapter-like
@@ -152,6 +270,8 @@ interface NativeFramework{ //SocketAdapter-like
 
 // Class Adapter SOCKET-ADAPTER-IMPLEMENTATION-Like
 class Apple_VirusTrackAppBuild extends RawVirusTrackApp implements NativeFramework {
+
+    Apple_VirusTrackAppBuild() throws ParseException {} //This default constructor is for Matching Super
 
     @Override
     public MobileApp buildForApple()
@@ -165,6 +285,49 @@ class Apple_VirusTrackAppBuild extends RawVirusTrackApp implements NativeFramewo
     @Override
     public MobileApp buildForLibrary() {return null;}
 
+    @Override
+    public void firstRun() throws InterruptedException {
+
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("Name?: ");
+        setUserNAME(sc.next());
+        System.out.println("Surname?: ");
+        setUserSURNAME(sc.next());
+        System.out.println("Age?: ");
+        setUserAGE(sc.nextInt());
+        System.out.println("Address?: ");
+        setUserADDRESS(sc.next());
+
+        //APPLE SPECIFIQUE
+        read();
+        write();
+
+
+        while(true)
+        {
+            TimeUnit.MINUTES.sleep(5);
+
+            clockFunction(oldDate);
+
+            if(this.isClockIntervalCheck() == true)
+            {
+                read();
+                write();
+            }
+        }
+
+
+    }
+
+    @Override
+    public void autoCheck()
+    {
+
+    }
+
+
+
     public void read() // This will read from the User
     {
 
@@ -176,11 +339,12 @@ class Apple_VirusTrackAppBuild extends RawVirusTrackApp implements NativeFramewo
         temp = sc.next();
         if(temp == "Y" || temp == "y" )
         {
-            tempFEWER = true;
+            setTempFEWER(true);
         }
         else if (temp == "N" || temp == "n")
         {
-            tempFEWER = false;
+            setTempFEWER(false);
+
         }
         else
         {
@@ -192,11 +356,11 @@ class Apple_VirusTrackAppBuild extends RawVirusTrackApp implements NativeFramewo
         temp = sc.next();
         if(temp == "Y" || temp == "y" )
         {
-            tempM_ACHE = true;
+            setTempM_ACHE(true);
         }
         else if (temp == "N" || temp == "n")
         {
-            tempM_ACHE = false;
+            setTempM_ACHE(false);
         }
         else
         {
@@ -208,11 +372,13 @@ class Apple_VirusTrackAppBuild extends RawVirusTrackApp implements NativeFramewo
 
         if(temp == "Y" || temp == "y" )
         {
-            tempR_NOSE = true;
+            setTempR_NOSE(true);
+
         }
         else if (temp == "N" || temp == "n")
         {
-            tempR_NOSE = false;
+            setTempR_NOSE(false);
+
         }
         else
         {
@@ -241,7 +407,7 @@ class Apple_VirusTrackAppBuild extends RawVirusTrackApp implements NativeFramewo
 
 public class virus_track_main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ParseException {
 
         //Aight boys Let's do this
 
@@ -251,7 +417,7 @@ public class virus_track_main {
 
 
         //Adaptor example here, Need main for User Requests.
-        //NativeFramework VTA_Apple = new Apple_VirusTrackAppBuild();
+        NativeFramework VTA_Apple = new Apple_VirusTrackAppBuild();
         //NativeFramework VTA_Samsung = new Samsung_VirusTrackAppBuild();
         //NativeFramework VTA_Library = new Library_VirusTrackAppBuild();
 

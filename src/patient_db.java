@@ -99,10 +99,20 @@ class patient_db {
         return print;
     }
 
+
+
     public void print(ArrayList<patient_db> patientDbTable) {
 
         for (int i = 0; i < patientDbTable.size(); i++) {
             System.out.println(toString(patientDbTable.get(i)));
+        }
+    }
+
+    public void updateStatus(ArrayList<patient_db> patientDb)
+    {
+        for(int i = 0; i < patientDb.size(); i++)
+        {
+            if()
         }
     }
 }
