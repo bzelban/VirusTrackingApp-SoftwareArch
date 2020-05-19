@@ -95,7 +95,7 @@ class patient_db {
 
 
     public String toString(patient_db x) {
-        String print = x.getNAME() + "  " + x.getSURNAME() + " Age: " + x.getAGE() + + " Adress: " + x.getADDRESS() +  " Fewer?: " + x.getFEWER() + " Muscle Ache?: " + x.getM_ACHE() + " Runny Nose?:" + x.getR_NOSE();
+        String print = x.getNAME() + "  " + x.getSURNAME() + " Age: " + x.getAGE() +  " Address: " + x.getADDRESS() +  " Fewer?: " + x.getFEWER() + " Muscle Ache?: " + x.getM_ACHE() + " Runny Nose?:" + x.getR_NOSE();
         return print;
     }
 
