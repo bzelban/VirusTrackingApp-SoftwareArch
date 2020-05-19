@@ -94,27 +94,23 @@ abstract class SamsungFactory{
 ////////////////////////////////////////////////////////////////////////////////////
 */
 
-/*
-VOLT (MobileAPP) {createApp}
-SOCKET ( RawVirus) {}
-
- */
 
 // The RawAppInc.
-// This part ports Raw Native Virus Track app to the specific phone also for d Admins
+// This part ports Raw Native Virus Track app to the specific phone also for the Library
 import java.util.Scanner;
 
-class MobileApp { //Volt-like (We Need This to install phones)
+class MobileApp { //Volt-like
 
     private String appName; //Currently Template for App
     private String platform; //iOS or Android
 
-    public MobileApp()
+    public MobileApp() // Default~
     {
-
+        this.appName = "NONAME";
+        this.platform = "NONAME";
     }
 
-    public MobileApp(String appName, String platform) {
+    public MobileApp(String appName, String platform) { // Parameterized~
         this.appName = appName;
         this.platform = platform;
     }
@@ -147,14 +143,14 @@ class RawVirusTrackApp{ //Socket-like (SOURCE)
 
 }
 
-interface NativeFramework{ //SocketAdapter-like (Converter)
+interface NativeFramework{ //SocketAdapter-like
     MobileApp buildForApple();
     MobileApp buildForAndroid();
     MobileApp buildForLibrary();
 
 }
 
-// Object Adapter SOCKET-ADAPTER-IMPLEMENTATION-Like
+// Class Adapter SOCKET-ADAPTER-IMPLEMENTATION-Like
 class Apple_VirusTrackAppBuild extends RawVirusTrackApp implements NativeFramework {
 
     @Override
@@ -169,7 +165,7 @@ class Apple_VirusTrackAppBuild extends RawVirusTrackApp implements NativeFramewo
     @Override
     public MobileApp buildForLibrary() {return null;}
 
-    public void read()
+    public void read() // This will read from the User
     {
 
         String temp;
@@ -226,9 +222,10 @@ class Apple_VirusTrackAppBuild extends RawVirusTrackApp implements NativeFramewo
         System.out.println("Thank You, Stay Safe!");
     }
 
-    public void write() //Write Pushlayacak
+    public void write() //Write Will Push to the system
     {
-
+        //  TO-DO
+        //      Write a pusher and observer notifier
     }
 
 }
@@ -236,7 +233,7 @@ class Apple_VirusTrackAppBuild extends RawVirusTrackApp implements NativeFramewo
 //  TO-DO:
 //      Samsung_VirusTrackAppBuild
 //      Library_VirusTrackAppBuild
-//          NEEDED AFTER ADDING CLOCK TIME DATE AND WRITE FUNCTION
+//          NEEDED AFTER ADDING CLOCK TIME/DATE AND WRITE FUNCTION
 
 ///////////////////////////////////////////////////////////////////////////////////
 
@@ -244,7 +241,7 @@ class Apple_VirusTrackAppBuild extends RawVirusTrackApp implements NativeFramewo
 
 public class virus_track_main {
 
-    public static void main(String[] args) throws InstantiationException, IllegalAccessException {
+    public static void main(String[] args) {
 
         //Aight boys Let's do this
 
