@@ -251,10 +251,8 @@ class RawVirusTrackApp{ //Socket-like (SOURCE)
         }
     }
 
-    //Those are going to be overridden by socket-adapter-implementation classes
+    //This is going to be overridden by socket-adapter-implementation classes
     void firstRun() throws InterruptedException {}
-    void autoCheck(){}
-    //
 
     public static MobileApp rawApp(String appName, String platform){
         return new MobileApp("rawVirusTrack", "debugOnly");
@@ -319,14 +317,6 @@ class Apple_VirusTrackAppBuild extends RawVirusTrackApp implements NativeFramewo
 
 
     }
-
-    @Override
-    public void autoCheck()
-    {
-
-    }
-
-
 
     public void read() // This will read from the User
     {

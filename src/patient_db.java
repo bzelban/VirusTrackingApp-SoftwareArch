@@ -108,12 +108,48 @@ class patient_db {
         }
     }
 
-    public void updateStatus(ArrayList<patient_db> patientDb)
+    public void updateStatus(ArrayList<patient_db> patientDb, String NAME, String SURNAME, boolean fewer, boolean M_ACHE, boolean R_NOSE)
     {
         for(int i = 0; i < patientDb.size(); i++)
         {
-            if()
+            if(patientDb.get(i).getNAME().equalsIgnoreCase(NAME))
+            {
+                if(patientDb.get(i).getNAME().equalsIgnoreCase(SURNAME))
+                {
+                    patientDb.get(i).setFEWER(fewer);
+                    patientDb.get(i).setM_ACHE(M_ACHE);
+                    patientDb.get(i).setR_NOSE(R_NOSE);
+                }
+                else
+                {
+                    System.out.println("No Patient Found!! (surname false)");
+                }
+
+            }
+            else
+            {
+                System.out.println("No Patient found!");
+            }
         }
+
+
+        //TO-DO
+        //  Need notify for update patient
+
+    }
+
+    public void addNewPatient(ArrayList<patient_db> patientDb, String NAME, String SURNAME, int AGE, String ADDRESS, boolean fewer, boolean M_ACHE, boolean R_NOSE)
+    {
+        patientDb.add(new patient_db(NAME, SURNAME, AGE, ADDRESS, fewer, M_ACHE, R_NOSE));
+        //TO-DO
+        // notify for New Patient
+    }
+
+
+    public static ArrayList<patient_db> _createDummyTable()
+    {
+        ArrayList<patient_db> patients = new ArrayList<>();
+        patients.add(new patient_db("testNAME", "testSURNAME", 99, "testADDRESS", false, false, false));
     }
 }
 
