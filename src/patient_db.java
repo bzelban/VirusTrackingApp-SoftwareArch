@@ -150,6 +150,7 @@ class patient_db {
     {
         ArrayList<patient_db> patients = new ArrayList<>();
         patients.add(new patient_db("testNAME", "testSURNAME", 99, "testADDRESS", false, false, false));
+        return patients;
     }
 }
 
