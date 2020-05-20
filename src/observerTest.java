@@ -128,8 +128,5 @@ public class observerTest {
 
         //message test
         topic.postMessage("Hi biçuz");
-
-
-
     }
 }

@@ -101,10 +101,7 @@ abstract class SamsungFactory{
 import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Scanner;
+import java.util.*;
 import java.util.concurrent.TimeUnit;
 
 
@@ -289,6 +286,9 @@ class Apple_VirusTrackAppBuild extends RawVirusTrackApp implements NativeFramewo
     @Override
     public MobileApp buildForLibrary() {return null;}
 
+    public void testPrint(){
+        System.out.println("deneme Apple");
+    }
     @Override
     public void firstRun() throws InterruptedException {
 
@@ -390,6 +390,7 @@ class Apple_VirusTrackAppBuild extends RawVirusTrackApp implements NativeFramewo
         //      Write a pusher and observer notifier
 
 
+
     }
 
 }
@@ -401,9 +402,52 @@ class Apple_VirusTrackAppBuild extends RawVirusTrackApp implements NativeFramewo
 
 ///////////////////////////////////////////////////////////////////////////////////
 
+//LibraryNotifier.io
+//  This part is for Observer Pattern
+interface SubjectInterface
+{
+    void register(LibraryAppObserver observer);
+    void notifyObserver();
+    Object getUpdate(LibraryAppObserver observer);
+}
+
+class symptomAnomalie implements SubjectInterface
+{
+    private List<LibraryAppObserver> observers;
+    private String 
+
+    @Override
+    public void register(LibraryAppObserver observer) {
+
+    }
+
+    @Override
+    public void notifyObserver() {
+
+    }
+
+    @Override
+    public Object getUpdate(LibraryAppObserver observer) {
+        return null;
+    }
+}
+
+
+
+
+interface LibraryAppObserver
+{
+    void update();
+    void set
+}
+
+
+/////////////////////////////////////////////////////////////////////////////////////
+
 
 
 public class virus_track_main {
+
 
     public static void main(String[] args) throws ParseException {
 
@@ -415,13 +459,14 @@ public class virus_track_main {
 
 
         //Adaptor example here, Need main for User Requests.
-        NativeFramework VTA_Apple = new Apple_VirusTrackAppBuild();
-        //NativeFramework VTA_Samsung = new Samsung_VirusTrackAppBuild();
-        //NativeFramework VTA_Library = new Library_VirusTrackAppBuild();
-
+        //RawVirusTrackApp VTA_Samsung = new Samsung_VirusTrackAppBuild();
+        //RawVirusTrackApp VTA_Library = new Library_VirusTrackAppBuild();
+        RawVirusTrackApp VTA_Apple = new Apple_VirusTrackAppBuild();
 
 
         ArrayList<patient_db> patients = patient_db._createDummyTable();
+
+        // If any patient condition goes true,
 
 
 
