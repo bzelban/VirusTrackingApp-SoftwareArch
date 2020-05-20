@@ -276,7 +276,7 @@ class Apple_VirusTrackAppBuild extends RawVirusTrackApp implements NativeFramewo
         this.observers = observers;
     } //This default constructor is for Matching Super
 
-    public Apple_VirusTrackAppBuild() {
+    public Apple_VirusTrackAppBuild() throws ParseException {
 
     }
 
@@ -501,7 +501,7 @@ interface LibraryAppObserver //Observer
     void update();
     void setPatients(SubjectInterface patients);
 
-} /d
+} //d
 
 
 /////////////////////////////////////////////////////////////////////////////////////
@@ -530,7 +530,8 @@ public class virus_track_main {
 
         // If any patient condition goes true,
 
-        RawVirusTrackApp VTA_Library = new Apple_VirusTrackAppBuild(observers);
+        RawVirusTrackApp VTA_Library = new Apple_VirusTrackAppBuild();
+
 
 
 
