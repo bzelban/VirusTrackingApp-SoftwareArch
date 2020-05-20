@@ -6,9 +6,7 @@ interface Subject
 {
     void register(Observer observer);
     void unregister(Observer observer);
-
     void notifyObservers();
-
     Object getUpdate(Observer observer);
 }
 
@@ -112,9 +110,7 @@ public class observerTest {
         emailTopic topic = new emailTopic();
 
         Observer firstObserver = new emailTopicSubscriber("FirstObserver");
-
         Observer secondObserver = new emailTopicSubscriber("SecondObserver");
-
         Observer thirdObserver = new emailTopicSubscriber("ThirdObserver");
 
         //Registering them to list
@@ -130,6 +126,7 @@ public class observerTest {
         //check for update
         firstObserver.update();
 
+        //message test
         topic.postMessage("Hi biçuz");
 
 
