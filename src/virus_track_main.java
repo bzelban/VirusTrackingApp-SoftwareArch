@@ -107,6 +107,9 @@ import java.util.Date;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
+
+
+
 class MobileApp { //Volt-like
 
     private String appName; //Currently Template for App
@@ -258,6 +261,8 @@ class RawVirusTrackApp{ //Socket-like (SOURCE)
     public static MobileApp rawApp(String appName, String platform){
         return new MobileApp("rawVirusTrack", "debugOnly");
     }
+
+
 }
 
 interface NativeFramework{ //SocketAdapter-like
@@ -383,6 +388,8 @@ class Apple_VirusTrackAppBuild extends RawVirusTrackApp implements NativeFramewo
     {
         //  TO-DO
         //      Write a pusher and observer notifier
+
+
     }
 
 }
@@ -414,17 +421,7 @@ public class virus_track_main {
 
 
 
-
-
-
-
-
-
         ArrayList<patient_db> patients = patient_db._createDummyTable();
-
-
-
-
 
 
 
