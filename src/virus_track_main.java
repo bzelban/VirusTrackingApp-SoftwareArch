@@ -631,7 +631,10 @@ class Library_VirusTrackAppBuild extends RawVirusTrackApp implements NativeFrame
         return RawVirusTrackApp.rawApp("Library Virus Track App", "Ministry of Health Systems");
     }
 
+    LibraryReceive receive = new LibraryReceive();
+    LibrarySend send = new LibrarySend();
 
+    LibraryFacade lr = new LibraryFacade(receive, send);
 
     //Observer Part
     private SubjectInterface patients;
@@ -657,6 +660,135 @@ class Library_VirusTrackAppBuild extends RawVirusTrackApp implements NativeFrame
         this.patients = patients;
     }
 }
+
+//////////////////////////////////////////////////////////////////////////////////
+
+// Auto.widgets
+//      This part represents facade for Library_VirusTrackAppBuild
+//      Also we can do to the others but if Time runs out, we will lose.
+
+class LibraryFacade
+{
+    private LibraryReceive receive;
+    private LibrarySend send;
+
+    public LibraryFacade(LibraryReceive receive, LibrarySend send) {
+        this.receive = receive;
+        this.send = send;
+    }
+
+    public void start()
+    {
+        while(true)
+        {
+
+            Scanner sc = new Scanner(System.in);
+            int tempMenu = 0;
+            System.out.println("Start Receive, Press 1\nStart Send, Press 2");
+            tempMenu = sc.nextInt();
+
+            if(tempMenu == 1)
+            {
+                receive.receive();
+            }
+            else if (tempMenu == 2)
+            {
+                send.send();
+            }
+            else
+            {
+                System.out.println("Wrong input! please try again...");
+            }
+        }
+    }
+}
+
+class LibraryReceive // NOT DONE YET
+{
+    public void receive()
+    {
+        boolean loopControl = true;
+
+        while(loopControl)
+        {
+
+
+            
+        }
+    }
+}
+
+class LibrarySend // Done
+{
+    public void send()
+    {
+        String name = " ", surname = " ", address = " ";
+        int age = 0;
+        boolean fewer = false, r_nose = false, m_ache = false;
+        //Adding new patient to database
+
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("Name of the Patient");
+        name = sc.next();
+        System.out.println("Surname of the Patient");
+        surname = sc.next();
+        System.out.println("Address of the Patient");
+        address = sc.next();
+        System.out.println("Age of the Patient");
+        age = sc.nextInt();
+
+        int tempSendMenu = 0;
+        System.out.println("Fewer? 1 for True, 2 for False");
+        tempSendMenu = sc.nextInt();
+        if(tempSendMenu == 1 )
+        {
+            fewer = true;
+        }
+        else if(tempSendMenu == 2)
+        {
+            fewer = false;
+        }
+        else
+        {
+            System.out.println("Wrong input, DEFAULT FALSE");
+        }
+
+        System.out.println("Muscle Ache? 1 for True, 2 for False");
+        tempSendMenu = sc.nextInt();
+        if(tempSendMenu == 1)
+        {
+            m_ache = true;
+        }
+        else if(tempSendMenu == 2)
+        {
+            m_ache = false;
+        }
+        else
+        {
+            System.out.println("Wrong input, DEFAULT FALSE");
+        }
+
+        System.out.println("Runny Nose? 1 for True, 2 for False");
+        tempSendMenu = sc.nextInt();
+        if(tempSendMenu == 1)
+        {
+            r_nose = true;
+        }
+        else if (tempSendMenu == 2)
+        {
+            r_nose = false;
+        }
+        else
+        {
+            System.out.println("Wrong input, DEFAULT FALSE");
+        }
+        patient_db.addNewPatient(virus_track_main.patient_dbs, name, surname, age, address, false, false, false);
+    }
+
+}
+
+
 
 ///////////////////////////////////////////////////////////////////////////////////
 

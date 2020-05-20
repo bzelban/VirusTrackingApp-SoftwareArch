@@ -138,7 +138,7 @@ class patient_db {
 
     }
 
-    public void addNewPatient(ArrayList<patient_db> patientDb, String NAME, String SURNAME, int AGE, String ADDRESS, boolean fewer, boolean M_ACHE, boolean R_NOSE)
+    public static void addNewPatient(ArrayList<patient_db> patientDb, String NAME, String SURNAME, int AGE, String ADDRESS, boolean fewer, boolean M_ACHE, boolean R_NOSE)
     {
         patientDb.add(new patient_db(NAME, SURNAME, AGE, ADDRESS, fewer, M_ACHE, R_NOSE));
         //TO-DO
