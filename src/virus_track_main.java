@@ -389,8 +389,7 @@ class Apple_VirusTrackAppBuild extends RawVirusTrackApp implements NativeFramewo
 
     public void write() // This send data on patient_db to the system
     {
-        //  TO-DO
-        //      Write a pusher and observer notifier
+
 
 
 
