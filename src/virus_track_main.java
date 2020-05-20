@@ -705,26 +705,33 @@ class LibraryFacade
 
 class LibraryReceive // NOT DONE YET
 {
+    boolean loopControl = true;
+
     public void receive()
     {
-        boolean loopControl = true;
+
 
         while(loopControl)
         {
 
-
             
+
         }
     }
 }
 
 class LibrarySend // Done
 {
+    int age = 0;
+    String name = " ", surname = " ", address = " ";
+    boolean fewer = false, r_nose = false, m_ache = false;
+    int tempSendMenu = 0;
+
     public void send()
     {
-        String name = " ", surname = " ", address = " ";
-        int age = 0;
-        boolean fewer = false, r_nose = false, m_ache = false;
+
+
+
         //Adding new patient to database
 
         Scanner sc = new Scanner(System.in);
@@ -738,7 +745,7 @@ class LibrarySend // Done
         System.out.println("Age of the Patient");
         age = sc.nextInt();
 
-        int tempSendMenu = 0;
+
         System.out.println("Fewer? 1 for True, 2 for False");
         tempSendMenu = sc.nextInt();
         if(tempSendMenu == 1 )
