@@ -270,7 +270,7 @@ interface NativeFramework{ //SocketAdapter-like
 }
 
 // Class Adapter SOCKET-ADAPTER-IMPLEMENTATION-Like
-class Apple_VirusTrackAppBuild extends RawVirusTrackApp implements NativeFramework, LibraryAppObserver {
+class Apple_VirusTrackAppBuild extends RawVirusTrackApp implements NativeFramework, SubjectInterface {
 
     Apple_VirusTrackAppBuild() throws ParseException {} //This default constructor is for Matching Super
 
@@ -365,7 +365,7 @@ class Apple_VirusTrackAppBuild extends RawVirusTrackApp implements NativeFramewo
 
 
         System.out.println("Runny Nose?: (Y)es or (N)o");
-
+        temp = sc.next();
         if(temp == "Y" || temp == "y" )
         {
             setTempR_NOSE(true);
@@ -393,9 +393,27 @@ class Apple_VirusTrackAppBuild extends RawVirusTrackApp implements NativeFramewo
 
     }
 
+    private List<LibraryAppObserver> observers;
+    private String
+
     @Override
     public void update() {
 
+    }
+
+    @Override
+    public void register(LibraryAppObserver observer) {
+
+    }
+
+    @Override
+    public void notifyObserver() {
+
+    }
+
+    @Override
+    public Object getUpdate(LibraryAppObserver observer) {
+        return null;
     }
 }
 
@@ -403,6 +421,31 @@ class Apple_VirusTrackAppBuild extends RawVirusTrackApp implements NativeFramewo
 //      Samsung_VirusTrackAppBuild
 //      Library_VirusTrackAppBuild
 //          NEEDED AFTER ADDING CLOCK TIME/DATE AND WRITE FUNCTION
+
+
+class Library_VirusTrackAppBuild extends RawVirusTrackApp implements NativeFramework, LibraryAppObserver
+{
+
+    @Override
+    public MobileApp buildForApple() {
+        return null;
+    }
+
+    @Override
+    public MobileApp buildForAndroid() {
+        return null;
+    }
+
+    @Override
+    public MobileApp buildForLibrary() {
+        return null;
+    }
+
+    @Override
+    public void update() {
+
+    }
+}
 
 ///////////////////////////////////////////////////////////////////////////////////
 
