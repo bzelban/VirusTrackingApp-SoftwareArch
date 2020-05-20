@@ -2,10 +2,14 @@ telefonları üreticez, factory
 kişinin envanterine eklicez,
 kişileri hasta edicez
 telefonunda modeline (adapter) göre uygulamayı bir kere yüklicez(singleton)
-decorator notifier zamanı kaydedicez, bildirim göndericez
+zamanı kaydedicez, bildirim göndericez
 kişi bilgileri girerince, anomalileri observe edicez. 
 Composite ile önemli listeleri alıcaz
+<<<<<<< HEAD
 facade kullanılabilir backgroun işlemler için
 
 
 adresi iteratorle yap, compozit isimler 25-60, otomize facade ile olacak. 
+=======
+
+>>>>>>> parent of 50399fd... Update Bedo Aklımdakiler.txt
