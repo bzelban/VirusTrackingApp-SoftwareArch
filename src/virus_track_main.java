@@ -276,6 +276,10 @@ class Apple_VirusTrackAppBuild extends RawVirusTrackApp implements NativeFramewo
         this.observers = observers;
     } //This default constructor is for Matching Super
 
+    public Apple_VirusTrackAppBuild() {
+
+    }
+
     @Override
     public MobileApp buildForApple()
     {
@@ -468,7 +472,7 @@ class Library_VirusTrackAppBuild extends RawVirusTrackApp implements NativeFrame
         }
         else
         {
-            System.out.println(" Retrieving message: " + );
+            System.out.println(" Retrieving message: " + msg);
         }
 
 
@@ -492,38 +496,12 @@ interface SubjectInterface  //Subject-like
     Object sendUpdate(LibraryAppObserver observer);
 } //d
 
-class LibraryAppUser implements LibraryAppObserver
-{
-    private String name;
-    private SubjectInterface topic;
-
-    public LibraryAppUser(String name) {this.name = name;}
-
-    @Override
-    public void update() {
-        String msg = (String) topic.getUpdate(this);
-        if(msg == null)
-        {
-            System.out.println("No known symptom changes");
-        }
-        else
-        {
-            System.out.println("Patient got Symptom changes: " + msg);
-        }
-
-
-    }
-}
-
-
-
-
 interface LibraryAppObserver //Observer
 {
     void update();
     void setPatients(SubjectInterface patients);
 
-}
+} /d
 
 
 /////////////////////////////////////////////////////////////////////////////////////
@@ -545,14 +523,14 @@ public class virus_track_main {
         //Adaptor example here, Need main for User Requests.
         //RawVirusTrackApp VTA_Samsung = new Samsung_VirusTrackAppBuild();
         //RawVirusTrackApp VTA_Library = new Library_VirusTrackAppBuild();
-        RawVirusTrackApp VTA_Apple = new Apple_VirusTrackAppBuild(observers);
+        RawVirusTrackApp VTA_Apple = new Apple_VirusTrackAppBuild();
 
 
         ArrayList<patient_db> patients = patient_db._createDummyTable();
 
         // If any patient condition goes true,
 
-
+        RawVirusTrackApp VTA_Library = new Apple_VirusTrackAppBuild(observers);
 
 
 
