@@ -175,7 +175,7 @@ class RawVirusTrackApp{ //Socket-like (SOURCE)
         UserADDRESS = userADDRESS;
     }
 
-    public boolean isTempFEWER(boolean b) {
+    public boolean isTempFEWER() {
         return tempFEWER;
     }
 
@@ -183,7 +183,7 @@ class RawVirusTrackApp{ //Socket-like (SOURCE)
         this.tempFEWER = tempFEWER;
     }
 
-    public boolean isTempM_ACHE(boolean b) {
+    public boolean isTempM_ACHE() {
         return tempM_ACHE;
     }
 
@@ -191,7 +191,7 @@ class RawVirusTrackApp{ //Socket-like (SOURCE)
         this.tempM_ACHE = tempM_ACHE;
     }
 
-    public boolean isTempR_NOSE(boolean b) {
+    public boolean isTempR_NOSE() {
         return tempR_NOSE;
     }
 
@@ -324,8 +324,6 @@ class Apple_VirusTrackAppBuild extends RawVirusTrackApp implements NativeFramewo
                 write();
             }
         }
-
-
     }
 
     public void read() // This will read from the User //DONE
@@ -390,22 +388,14 @@ class Apple_VirusTrackAppBuild extends RawVirusTrackApp implements NativeFramewo
 
     public void write() // This send data on patient_db to the system
     {
-        patient_db patient = new  patient_db();
-        if(isTempFEWER(true) || isTempM_ACHE(true) || isTempR_NOSE(true)){
-        patient.updateStatus(,this.getUserNAME(),this.getUserSURNAME(),this.isTempFEWER(),this.isTempM_ACHE(),this.isTempR_NOSE());
-        postMessage(this.getUserNAME(),this.getUserSURNAME());
-
-        }
-
-        else{
-            patient.updateStatus(patient_db._createDummyTable(),this.getUserNAME(),this.getUserSURNAME(),this.isTempFEWER(false),this.isTempM_ACHE(false),this.isTempR_NOSE(false));
-
-        }
-
-
-
         //if Any of the patient has some health anomalies, cast postMessage(this.getNAME(), this.getSURNAME())
 
+        patient_db.updateStatus(virus_track_main.patient_dbs ,this.getUserNAME(), this.getUserSURNAME(), this.isTempFEWER(), this.isTempM_ACHE(), this.isTempR_NOSE());
+
+        if(isTempFEWER() || isTempM_ACHE() || isTempR_NOSE())
+        {
+            postMessage(this.getUserNAME(), this.getUserSURNAME());
+        }
 
     }
 
@@ -452,6 +442,176 @@ class Apple_VirusTrackAppBuild extends RawVirusTrackApp implements NativeFramewo
 //      Library_VirusTrackAppBuild
 //          NEEDED AFTER ADDING CLOCK TIME/DATE AND WRITE FUNCTION
 
+class Android_VirusTrackAppBuild extends RawVirusTrackApp implements NativeFramework, SubjectInterface {
+
+
+    Android_VirusTrackAppBuild(List<LibraryAppObserver> observers) throws ParseException {
+        this.observers = observers;
+    } //This default constructor is for Matching Super
+
+    public void Android_VirusTrackAppBuild() throws ParseException {
+
+    }
+
+    @Override
+    public MobileApp buildForApple()
+    {
+        return null;
+    } //DONE
+
+    @Override
+    public MobileApp buildForAndroid()
+    {
+        return RawVirusTrackApp.rawApp("Virus Track", "Apple");
+    }
+
+    @Override
+    public MobileApp buildForLibrary() {return null;}
+
+    @Override
+    public void firstRun() throws InterruptedException {
+
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("Name?: ");
+        setUserNAME(sc.next());
+        System.out.println("Surname?: ");
+        setUserSURNAME(sc.next());
+        System.out.println("Age?: ");
+        setUserAGE(sc.nextInt());
+        System.out.println("Address?: ");
+        setUserADDRESS(sc.next());
+
+        //APPLE SPECIFIQUE
+        get();
+        set();
+
+
+        while(true)
+        {
+            TimeUnit.MINUTES.sleep(5);
+
+            clockFunction(oldDate);
+
+            if(this.isClockIntervalCheck() == true)
+            {
+                get();
+                set();
+            }
+        }
+    }
+
+    public void get() // This will read from the User //DONE
+    {
+
+        String temp;
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Please enter your recent physical conditions");
+
+        System.out.println("Fewer?: (Y)es or (N)o");
+        temp = sc.next();
+        if(temp == "Y" || temp == "y" )
+        {
+            setTempFEWER(true);
+        }
+        else if (temp == "N" || temp == "n")
+        {
+            setTempFEWER(false);
+
+        }
+        else
+        {
+            System.out.println("Wrong input!");
+        }
+
+
+        System.out.println("Muscle Ache?: (Y)es or (N)o");
+        temp = sc.next();
+        if(temp == "Y" || temp == "y" )
+        {
+            setTempM_ACHE(true);
+        }
+        else if (temp == "N" || temp == "n")
+        {
+            setTempM_ACHE(false);
+        }
+        else
+        {
+            System.out.println("Wrong input!");
+        }
+
+
+        System.out.println("Runny Nose?: (Y)es or (N)o");
+        temp = sc.next();
+        if(temp == "Y" || temp == "y" )
+        {
+            setTempR_NOSE(true);
+
+        }
+        else if (temp == "N" || temp == "n")
+        {
+            setTempR_NOSE(false);
+
+        }
+        else
+        {
+            System.out.println("Wrong input!");
+        }
+
+        System.out.println("Thank You, Stay Safe!");
+    }
+
+    public void set() // This send data on patient_db to the system
+    {
+        //if Any of the patient has some health anomalies, cast postMessage(this.getNAME(), this.getSURNAME())
+
+        patient_db.updateStatus(virus_track_main.patient_dbs ,this.getUserNAME(), this.getUserSURNAME(), this.isTempFEWER(), this.isTempM_ACHE(), this.isTempR_NOSE());
+
+        if(isTempFEWER() || isTempM_ACHE() || isTempR_NOSE())
+        {
+            postMessage(this.getUserNAME(), this.getUserSURNAME());
+        }
+
+    }
+
+    //Subject organs
+    private List<LibraryAppObserver> observers;
+    private String message;
+
+
+    @Override
+    public void register(LibraryAppObserver observer) { //DONE
+        if (observer == null) throw new NullPointerException(("No Observer Found"));
+
+        if(!observers.contains(observer))
+        {
+            observers.add(observer);
+        }
+
+    }
+
+    @Override
+    public void notifyObserver() { // Done
+        for(LibraryAppObserver observer : observers)
+        {
+            observer.update();
+        }
+
+    }
+
+    @Override
+    public Object sendUpdate(LibraryAppObserver observer) {
+        return this.message;
+    }
+
+    public void postMessage(String name, String surname)
+    {
+        System.out.println("This guy needs help! Name: " + name + " Surname: " + surname);
+        notifyObserver();
+    }
+
+}
+
 
 class Library_VirusTrackAppBuild extends RawVirusTrackApp implements NativeFramework, LibraryAppObserver
 {
@@ -474,6 +634,9 @@ class Library_VirusTrackAppBuild extends RawVirusTrackApp implements NativeFrame
         return RawVirusTrackApp.rawApp("Library Virus Track App", "Ministry of Health Systems");
     }
 
+
+
+    //Observer Part
     private SubjectInterface patients;
 
     @Override
@@ -524,6 +687,7 @@ interface LibraryAppObserver //Observer
 public class virus_track_main {
 
     public static ArrayList<patient_db> patient_dbs;
+
     public static void main(String[] args) throws ParseException, InterruptedException {
 
         //Aight boys Let's do this
@@ -532,19 +696,22 @@ public class virus_track_main {
         //CellPhone iPhone = new AppleFactory.createApple("Apple", "iPhone 6");
         //CellPhone Galaxy = new SamsungFactory.createSamsung("Samsung", "Galaxy 5");
 
+        //Creating a Database
+        patient_dbs = new ArrayList<>();
+        patient_dbs = patient_db._createDummyTable();
+        //Test User: ali uzun 40 konak
 
         //Adaptor example here, Need main for User Requests.
         //RawVirusTrackApp VTA_Samsung = new Samsung_VirusTrackAppBuild();
         //RawVirusTrackApp VTA_Library = new Library_VirusTrackAppBuild();
         RawVirusTrackApp VTA_Apple = new Apple_VirusTrackAppBuild();
+        RawVirusTrackApp VTA_Library = new Apple_VirusTrackAppBuild();
 
 
-        patient_dbs = new ArrayList<>();
-        patient_dbs = patient_db._createDummyTable();
 
         // If any patient condition goes true,
 
-        RawVirusTrackApp VTA_Library = new Apple_VirusTrackAppBuild();
+
 
 
 
@@ -575,3 +742,8 @@ public class virus_track_main {
 
 
 }
+
+
+
+
+

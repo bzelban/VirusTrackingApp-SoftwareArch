@@ -108,7 +108,7 @@ class patient_db {
         }
     }
 
-    public void updateStatus(ArrayList<patient_db> patientDb, String NAME, String SURNAME, boolean fewer, boolean M_ACHE, boolean R_NOSE)
+    public static void updateStatus(ArrayList<patient_db> patientDb, String NAME, String SURNAME, boolean fewer, boolean M_ACHE, boolean R_NOSE)
     {
         for(int i = 0; i < patientDb.size(); i++)
         {
@@ -155,6 +155,7 @@ class patient_db {
         patients.add(new patient_db("MERT","DOYURGAN",23,"BALCOVA",false,false,true));
         patients.add(new patient_db("ERDEM","OKUR",29,"BALCOVA asd sokak",false,true,false));
         patients.add(new patient_db("TUGGUN","ASRAK",24,"KARSIYAKA",false,false,false));
+        patients.add(new patient_db("ali", "uzun", 40, "konak", false, false, false));
         return patients;
     }
 }
