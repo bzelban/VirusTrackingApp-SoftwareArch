@@ -270,7 +270,7 @@ interface NativeFramework{ //SocketAdapter-like
 }
 
 // Class Adapter SOCKET-ADAPTER-IMPLEMENTATION-Like
-class Apple_VirusTrackAppBuild extends RawVirusTrackApp implements NativeFramework {
+class Apple_VirusTrackAppBuild extends RawVirusTrackApp, LibraryAppUsert implements NativeFramework {
 
     Apple_VirusTrackAppBuild() throws ParseException {} //This default constructor is for Matching Super
 
@@ -404,38 +404,70 @@ class Apple_VirusTrackAppBuild extends RawVirusTrackApp implements NativeFramewo
 
 //LibraryNotifier.io
 //  This part is for Observer Pattern
-interface SubjectInterface
+interface SubjectInterface  //Subject-like
 {
     void register(LibraryAppObserver observer);
     void notifyObserver();
     Object getUpdate(LibraryAppObserver observer);
 }
 
-class symptomAnomalie implements SubjectInterface
+class SymptomAnomalie implements SubjectInterface //emailTopic-like
 {
     private List<LibraryAppObserver> observers;
-    private String 
+    private String symptomMessage;
 
     @Override
     public void register(LibraryAppObserver observer) {
+        if (observer == null) throw new NullPointerException(("No Observer Found"));
+
+        if(!observers.contains(observer))
+        {
+            observers.add(observer);
+        }
 
     }
 
     @Override
     public void notifyObserver() {
+        for(LibraryAppObserver observer : observers)
+        {
+            observer.update();
+        }
 
     }
 
     @Override
     public Object getUpdate(LibraryAppObserver observer) {
-        return null;
+        return this.symptomMessage;
+    }
+
+    public void postAnomalie(String symptomMessage)
+    {
+        System.out.println("A Patient got sympthom anomalie" + symptomMessage);
+        this.symptomMessage = symptomMessage;
+        notifyObserver();
+
+    }
+}
+
+class LibraryAppUser implements LibraryAppObserver
+{
+    private String name;
+    private SubjectInterface topic;
+
+    public LibraryAppUser(String name) {this.name = name;}
+
+    @Override
+    public void update() {
+
+
     }
 }
 
 
 
 
-interface LibraryAppObserver
+interface LibraryAppObserver //Observer
 {
     void update();
     void set
