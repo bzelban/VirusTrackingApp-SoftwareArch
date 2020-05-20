@@ -272,7 +272,9 @@ interface NativeFramework{ //SocketAdapter-like
 // Class Adapter SOCKET-ADAPTER-IMPLEMENTATION-Like
 class Apple_VirusTrackAppBuild extends RawVirusTrackApp implements NativeFramework, SubjectInterface {
 
-    Apple_VirusTrackAppBuild() throws ParseException {} //This default constructor is for Matching Super
+    Apple_VirusTrackAppBuild(List<LibraryAppObserver> observers) throws ParseException {
+        this.observers = observers;
+    } //This default constructor is for Matching Super
 
     @Override
     public MobileApp buildForApple()
@@ -393,27 +395,43 @@ class Apple_VirusTrackAppBuild extends RawVirusTrackApp implements NativeFramewo
 
     }
 
+    //Subject organs
     private List<LibraryAppObserver> observers;
-    private String
+    private String message
 
-    @Override
-    public void update() {
-
-    }
 
     @Override
     public void register(LibraryAppObserver observer) {
+        if (observer == null) throw new NullPointerException(("No Observer Found"));
+
+        if(!observers.contains(observer))
+        {
+            observers.add(observer);
+        }
 
     }
 
     @Override
     public void notifyObserver() {
+        for(LibraryAppObserver observer : observers)
+        {
+            observer.update();
+        }
 
     }
 
     @Override
     public Object getUpdate(LibraryAppObserver observer) {
         return null;
+    }
+
+    @Override
+    public Object sendUpdate(LibraryAppObserver observer1) {
+        for(LibraryAppObserver observer : observers)
+        {
+            observer.update();
+        }
+
     }
 }
 
@@ -458,45 +476,6 @@ interface SubjectInterface  //Subject-like
     Object getUpdate(LibraryAppObserver observer);
 } //d
 
-class SymptomAnomalie implements SubjectInterface //emailTopic-like
-{
-    private List<LibraryAppObserver> observers;
-    private String symptomMessage;
-
-    @Override
-    public void register(LibraryAppObserver observer) {
-        if (observer == null) throw new NullPointerException(("No Observer Found"));
-
-        if(!observers.contains(observer))
-        {
-            observers.add(observer);
-        }
-
-    }
-
-    @Override
-    public void notifyObserver() {
-        for(LibraryAppObserver observer : observers)
-        {
-            observer.update();
-        }
-
-    }
-
-    @Override
-    public Object getUpdate(LibraryAppObserver observer) {
-        return this.symptomMessage;
-    }
-
-    public void postAnomalie(String symptomMessage)
-    {
-        System.out.println("A Patient got sympthom anomalie" + symptomMessage);
-        this.symptomMessage = symptomMessage;
-        notifyObserver();
-
-    }
-}//d
-
 class LibraryAppUser implements LibraryAppObserver
 {
     private String name;
@@ -526,6 +505,7 @@ class LibraryAppUser implements LibraryAppObserver
 interface LibraryAppObserver //Observer
 {
     void update();
+    void setPatients(SubjectInterface patients);
 
 }
 
@@ -549,7 +529,7 @@ public class virus_track_main {
         //Adaptor example here, Need main for User Requests.
         //RawVirusTrackApp VTA_Samsung = new Samsung_VirusTrackAppBuild();
         //RawVirusTrackApp VTA_Library = new Library_VirusTrackAppBuild();
-        RawVirusTrackApp VTA_Apple = new Apple_VirusTrackAppBuild();
+        RawVirusTrackApp VTA_Apple = new Apple_VirusTrackAppBuild(observers);
 
 
         ArrayList<patient_db> patients = patient_db._createDummyTable();
