@@ -280,7 +280,7 @@ class Apple_VirusTrackAppBuild extends RawVirusTrackApp implements NativeFramewo
     public MobileApp buildForApple()
     {
         return RawVirusTrackApp.rawApp("Virus Track", "Apple");
-    }
+    } //DONE
 
     @Override
     public MobileApp buildForAndroid() {return null;}
@@ -288,9 +288,6 @@ class Apple_VirusTrackAppBuild extends RawVirusTrackApp implements NativeFramewo
     @Override
     public MobileApp buildForLibrary() {return null;}
 
-    public void testPrint(){
-        System.out.println("deneme Apple");
-    }
     @Override
     public void firstRun() throws InterruptedException {
 
@@ -326,7 +323,7 @@ class Apple_VirusTrackAppBuild extends RawVirusTrackApp implements NativeFramewo
 
     }
 
-    public void read() // This will read from the User
+    public void read() // This will read from the User //DONE
     {
 
         String temp;
@@ -386,7 +383,7 @@ class Apple_VirusTrackAppBuild extends RawVirusTrackApp implements NativeFramewo
         System.out.println("Thank You, Stay Safe!");
     }
 
-    public void write() //Write Will Push to the system
+    public void write() // This send data on patient_db to the system
     {
         //  TO-DO
         //      Write a pusher and observer notifier
@@ -397,11 +394,11 @@ class Apple_VirusTrackAppBuild extends RawVirusTrackApp implements NativeFramewo
 
     //Subject organs
     private List<LibraryAppObserver> observers;
-    private String message
+    private String message;
 
 
     @Override
-    public void register(LibraryAppObserver observer) {
+    public void register(LibraryAppObserver observer) { //DONE
         if (observer == null) throw new NullPointerException(("No Observer Found"));
 
         if(!observers.contains(observer))
@@ -412,7 +409,7 @@ class Apple_VirusTrackAppBuild extends RawVirusTrackApp implements NativeFramewo
     }
 
     @Override
-    public void notifyObserver() {
+    public void notifyObserver() { // Done
         for(LibraryAppObserver observer : observers)
         {
             observer.update();
@@ -421,18 +418,16 @@ class Apple_VirusTrackAppBuild extends RawVirusTrackApp implements NativeFramewo
     }
 
     @Override
-    public Object getUpdate(LibraryAppObserver observer) {
-        return null;
+    public Object sendUpdate(LibraryAppObserver observer) {
+        return this.message;
     }
 
-    @Override
-    public Object sendUpdate(LibraryAppObserver observer1) {
-        for(LibraryAppObserver observer : observers)
-        {
-            observer.update();
-        }
-
+    public void postMessage(String message)
+    {
+        System.out.println("This guy needs help! Name: " + this.getUserNAME() + " Surname: " + this.getUserSURNAME());
+        notifyObserver();
     }
+
 }
 
 //  TO-DO:
@@ -443,6 +438,9 @@ class Apple_VirusTrackAppBuild extends RawVirusTrackApp implements NativeFramewo
 
 class Library_VirusTrackAppBuild extends RawVirusTrackApp implements NativeFramework, LibraryAppObserver
 {
+
+    Library_VirusTrackAppBuild() throws ParseException {
+    }
 
     @Override
     public MobileApp buildForApple() {
@@ -456,12 +454,30 @@ class Library_VirusTrackAppBuild extends RawVirusTrackApp implements NativeFrame
 
     @Override
     public MobileApp buildForLibrary() {
-        return null;
+        return RawVirusTrackApp.rawApp("Library Virus Track App", "Ministry of Health Systems");
     }
+
+    private SubjectInterface patients;
 
     @Override
     public void update() {
+        String msg = (String) patients.sendUpdate(this);
+        if (msg == null)
+        {
+            System.out.println(" No new message on this topic!");
+        }
+        else
+        {
+            System.out.println(" Retrieving message: " + );
+        }
 
+
+    }
+
+    @Override
+    public void setPatients(SubjectInterface patients) {
+
+        this.patients = patients;
     }
 }
 
@@ -473,7 +489,7 @@ interface SubjectInterface  //Subject-like
 {
     void register(LibraryAppObserver observer);
     void notifyObserver();
-    Object getUpdate(LibraryAppObserver observer);
+    Object sendUpdate(LibraryAppObserver observer);
 } //d
 
 class LibraryAppUser implements LibraryAppObserver
@@ -517,7 +533,7 @@ interface LibraryAppObserver //Observer
 public class virus_track_main {
 
 
-    public static void main(String[] args) throws ParseException {
+    public static void main(String[] args) throws ParseException, InterruptedException {
 
         //Aight boys Let's do this
 
@@ -535,6 +551,7 @@ public class virus_track_main {
         ArrayList<patient_db> patients = patient_db._createDummyTable();
 
         // If any patient condition goes true,
+
 
 
 
