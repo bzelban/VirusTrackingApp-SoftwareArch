@@ -270,7 +270,7 @@ interface NativeFramework{ //SocketAdapter-like
 }
 
 // Class Adapter SOCKET-ADAPTER-IMPLEMENTATION-Like
-class Apple_VirusTrackAppBuild extends RawVirusTrackApp, LibraryAppUsert implements NativeFramework {
+class Apple_VirusTrackAppBuild extends RawVirusTrackApp implements NativeFramework, LibraryAppObserver {
 
     Apple_VirusTrackAppBuild() throws ParseException {} //This default constructor is for Matching Super
 
@@ -393,6 +393,10 @@ class Apple_VirusTrackAppBuild extends RawVirusTrackApp, LibraryAppUsert impleme
 
     }
 
+    @Override
+    public void update() {
+
+    }
 }
 
 //  TO-DO:
@@ -409,7 +413,7 @@ interface SubjectInterface  //Subject-like
     void register(LibraryAppObserver observer);
     void notifyObserver();
     Object getUpdate(LibraryAppObserver observer);
-}
+} //d
 
 class SymptomAnomalie implements SubjectInterface //emailTopic-like
 {
@@ -448,7 +452,7 @@ class SymptomAnomalie implements SubjectInterface //emailTopic-like
         notifyObserver();
 
     }
-}
+}//d
 
 class LibraryAppUser implements LibraryAppObserver
 {
@@ -459,6 +463,15 @@ class LibraryAppUser implements LibraryAppObserver
 
     @Override
     public void update() {
+        String msg = (String) topic.getUpdate(this);
+        if(msg == null)
+        {
+            System.out.println("No known symptom changes");
+        }
+        else
+        {
+            System.out.println("Patient got Symptom changes: " + msg);
+        }
 
 
     }
@@ -470,7 +483,7 @@ class LibraryAppUser implements LibraryAppObserver
 interface LibraryAppObserver //Observer
 {
     void update();
-    void set
+
 }
 
 
