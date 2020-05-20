@@ -394,6 +394,9 @@ class Apple_VirusTrackAppBuild extends RawVirusTrackApp implements NativeFramewo
 
 
 
+        //if Any of the patient has some health anomalies, cast postMessage(this.getNAME(), this.getSURNAME())
+
+
     }
 
     //Subject organs
@@ -426,9 +429,9 @@ class Apple_VirusTrackAppBuild extends RawVirusTrackApp implements NativeFramewo
         return this.message;
     }
 
-    public void postMessage(String message)
+    public void postMessage(String name, String surname)
     {
-        System.out.println("This guy needs help! Name: " + this.getUserNAME() + " Surname: " + this.getUserSURNAME());
+        System.out.println("This guy needs help! Name: " + name + " Surname: " + surname);
         notifyObserver();
     }
 
@@ -443,7 +446,7 @@ class Apple_VirusTrackAppBuild extends RawVirusTrackApp implements NativeFramewo
 class Library_VirusTrackAppBuild extends RawVirusTrackApp implements NativeFramework, LibraryAppObserver
 {
 
-    Library_VirusTrackAppBuild() throws ParseException {
+    public Library_VirusTrackAppBuild() throws ParseException {
     }
 
     @Override
