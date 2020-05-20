@@ -175,7 +175,7 @@ class RawVirusTrackApp{ //Socket-like (SOURCE)
         UserADDRESS = userADDRESS;
     }
 
-    public boolean isTempFEWER() {
+    public boolean isTempFEWER(boolean b) {
         return tempFEWER;
     }
 
@@ -183,7 +183,7 @@ class RawVirusTrackApp{ //Socket-like (SOURCE)
         this.tempFEWER = tempFEWER;
     }
 
-    public boolean isTempM_ACHE() {
+    public boolean isTempM_ACHE(boolean b) {
         return tempM_ACHE;
     }
 
@@ -191,7 +191,7 @@ class RawVirusTrackApp{ //Socket-like (SOURCE)
         this.tempM_ACHE = tempM_ACHE;
     }
 
-    public boolean isTempR_NOSE() {
+    public boolean isTempR_NOSE(boolean b) {
         return tempR_NOSE;
     }
 
@@ -271,6 +271,7 @@ interface NativeFramework{ //SocketAdapter-like
 
 // Class Adapter SOCKET-ADAPTER-IMPLEMENTATION-Like
 class Apple_VirusTrackAppBuild extends RawVirusTrackApp implements NativeFramework, SubjectInterface {
+
 
     Apple_VirusTrackAppBuild(List<LibraryAppObserver> observers) throws ParseException {
         this.observers = observers;
@@ -389,8 +390,17 @@ class Apple_VirusTrackAppBuild extends RawVirusTrackApp implements NativeFramewo
 
     public void write() // This send data on patient_db to the system
     {
-        //  TO-DO
-        //      Write a pusher and observer notifier
+        patient_db patient = new  patient_db();
+        if(isTempFEWER(true) || isTempM_ACHE(true) || isTempR_NOSE(true)){
+        patient.updateStatus(,this.getUserNAME(),this.getUserSURNAME(),this.isTempFEWER(),this.isTempM_ACHE(),this.isTempR_NOSE());
+        postMessage(this.getUserNAME(),this.getUserSURNAME());
+
+        }
+
+        else{
+            patient.updateStatus(patient_db._createDummyTable(),this.getUserNAME(),this.getUserSURNAME(),this.isTempFEWER(false),this.isTempM_ACHE(false),this.isTempR_NOSE(false));
+
+        }
 
 
 
@@ -531,7 +541,6 @@ public class virus_track_main {
 
         patient_dbs = new ArrayList<>();
         patient_dbs = patient_db._createDummyTable();
-
 
         // If any patient condition goes true,
 

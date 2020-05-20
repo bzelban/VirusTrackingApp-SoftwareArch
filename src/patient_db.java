@@ -85,7 +85,7 @@ class patient_db {
         this.ADDRESS = ADDRESS;
     }
 
-    private ArrayList<patient_db> _createPatientTable() {
+    public ArrayList<patient_db> _createPatientTable() {
 
         ArrayList<patient_db> patientDbList = new ArrayList<>();
         patientDbList.add(new patient_db("TEST", "TEST", 99, "x city, y street, z condo", false, false, false));
@@ -150,6 +150,11 @@ class patient_db {
     {
         ArrayList<patient_db> patients = new ArrayList<>();
         patients.add(new patient_db("testNAME", "testSURNAME", 99, "testADDRESS", false, false, false));
+        patients.add(new patient_db("BERK","YILMAZ",23,"ADRESS",false,false,false));
+        patients.add(new patient_db("BEDIRHAN ZIRAN","ELBAN",26,"KARABAGLAR",true,false,false));
+        patients.add(new patient_db("MERT","DOYURGAN",23,"BALCOVA",false,false,true));
+        patients.add(new patient_db("ERDEM","OKUR",29,"BALCOVA asd sokak",false,true,false));
+        patients.add(new patient_db("TUGGUN","ASRAK",24,"KARSIYAKA",false,false,false));
         return patients;
     }
 }
