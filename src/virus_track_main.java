@@ -513,7 +513,7 @@ interface LibraryAppObserver //Observer
 
 public class virus_track_main {
 
-
+    public static ArrayList<patient_db> patient_dbs;
     public static void main(String[] args) throws ParseException, InterruptedException {
 
         //Aight boys Let's do this
@@ -529,7 +529,9 @@ public class virus_track_main {
         RawVirusTrackApp VTA_Apple = new Apple_VirusTrackAppBuild();
 
 
-        ArrayList<patient_db> patients = patient_db._createDummyTable();
+        patient_dbs = new ArrayList<>();
+        patient_dbs = patient_db._createDummyTable();
+
 
         // If any patient condition goes true,
 
