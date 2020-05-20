@@ -709,11 +709,8 @@ class LibraryReceive // NOT DONE YET
 
     public void receive()
     {
-
-
         while(loopControl)
         {
-
             
 
         }
@@ -729,9 +726,6 @@ class LibrarySend // Done
 
     public void send()
     {
-
-
-
         //Adding new patient to database
 
         Scanner sc = new Scanner(System.in);
