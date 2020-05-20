@@ -156,6 +156,8 @@ class patient_db {
         patients.add(new patient_db("ERDEM","OKUR",29,"BALCOVA asd sokak",false,true,false));
         patients.add(new patient_db("TUGGUN","ASRAK",24,"KARSIYAKA",false,false,false));
         patients.add(new patient_db("ali", "uzun", 40, "konak", false, false, false));
+        patients.add(new patient_db("Murat","Kısrak",55,"Bostanli",false,true,true));
+        patients.add(new patient_db("Belma","Simsek",50,"Gaziemir",true,false,false));
         return patients;
     }
 }
