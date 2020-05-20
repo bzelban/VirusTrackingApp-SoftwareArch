@@ -105,8 +105,6 @@ import java.util.*;
 import java.util.concurrent.TimeUnit;
 
 
-
-
 class MobileApp { //Volt-like
 
     private String appName; //Currently Template for App
@@ -612,7 +610,6 @@ class Android_VirusTrackAppBuild extends RawVirusTrackApp implements NativeFrame
 
 }
 
-
 class Library_VirusTrackAppBuild extends RawVirusTrackApp implements NativeFramework, LibraryAppObserver
 {
 
@@ -679,10 +676,7 @@ interface LibraryAppObserver //Observer
 
 } //d
 
-
 /////////////////////////////////////////////////////////////////////////////////////
-
-
 
 public class virus_track_main {
 
