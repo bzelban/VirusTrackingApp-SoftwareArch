@@ -334,11 +334,11 @@ class Apple_VirusTrackAppBuild extends RawVirusTrackApp implements NativeFramewo
 
         System.out.println("Fewer?: (Y)es or (N)o");
         temp = sc.next();
-        if(temp == "Y" || temp == "y" )
+        if(temp.equalsIgnoreCase("Y") || temp.equalsIgnoreCase("y") )
         {
             setTempFEWER(true);
         }
-        else if (temp == "N" || temp == "n")
+        else if (temp.equalsIgnoreCase("N") || temp.equalsIgnoreCase("n"))
         {
             setTempFEWER(false);
 
@@ -351,11 +351,11 @@ class Apple_VirusTrackAppBuild extends RawVirusTrackApp implements NativeFramewo
 
         System.out.println("Muscle Ache?: (Y)es or (N)o");
         temp = sc.next();
-        if(temp == "Y" || temp == "y" )
+        if(temp.equalsIgnoreCase("Y") || temp.equalsIgnoreCase("y"))
         {
             setTempM_ACHE(true);
         }
-        else if (temp == "N" || temp == "n")
+        else if (temp.equalsIgnoreCase("N") || temp.equalsIgnoreCase("n"))
         {
             setTempM_ACHE(false);
         }
@@ -367,12 +367,12 @@ class Apple_VirusTrackAppBuild extends RawVirusTrackApp implements NativeFramewo
 
         System.out.println("Runny Nose?: (Y)es or (N)o");
         temp = sc.next();
-        if(temp == "Y" || temp == "y" )
+        if(temp.equalsIgnoreCase("Y") || temp.equalsIgnoreCase("y") )
         {
             setTempR_NOSE(true);
 
         }
-        else if (temp == "N" || temp == "n")
+        else if (temp.equalsIgnoreCase("N") || temp.equalsIgnoreCase("n"))
         {
             setTempR_NOSE(false);
 
@@ -801,34 +801,41 @@ class MainFacade
         System.out.println("Starting the Virus Tracking App Simulator\n");
         boolean loopControl = true;
         int tempStartMenuInt = 0;
+
         Scanner sc = new Scanner(System.in);
 
         while(loopControl)
         {
-            System.out.println("\n To start Apple Virus Track App Simulator enter 1\n To start Samsung Virus Track App Simulator press 2\n To start Library Virus Track App Simulator enter 3\n To terminate enter 3 ");
+            System.out.println("\n To start Apple Virus Track App Simulator enter 1\n To start Samsung Virus Track App Simulator press 2\n To start Library Virus Track App Simulator enter 3\n To terminate enter 4 ");
             tempStartMenuInt = sc.nextInt();
-            if( )
-            {
 
-            }
-            else if
+            switch(tempStartMenuInt)
             {
+                case 1:
+                    AppleF.AppleMenu(appleApp);
+                    break;
 
-            }
-            else if
-            {
+                case 2:
+                    AndroidF.AndroidMenu(androidApp);
+                    break;
 
-            }
-            else
-            {
+                case 3:
+                    LibraryF.LibraryMenu(libraryApp);
+                    break;
 
+                case 4:
+                    System.out.println("Terminating the Simulator");
+                    loopControl = false;
+                    break;
+
+                default:
+                    System.out.println("Wrong Choice, try again");
+                    break;
             }
         }
-
-        AppleF.AppleMenu(appleApp);
+        //AppleF.AppleMenu(appleApp);
         //AndroidF.AndroidMenu(androidApp);
         //LibraryF.LibraryMenu(libraryApp);
-
     }
 
 
@@ -845,7 +852,6 @@ class AppleMainFacade
         System.out.println("\nNote: To test, use Name: ali, Surname: uzun, Age: 40, Address: konak\n\n");
 
         app.firstRun();
-
     }
 }
 
@@ -861,7 +867,6 @@ class AndroidMainFacade
 
         app.firstRun();
     }
-
 }
 
 class LibraryMainFacade

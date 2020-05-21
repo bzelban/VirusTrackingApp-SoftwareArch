@@ -112,9 +112,9 @@ class patient_db {
     {
         for(int i = 0; i < patientDb.size(); i++)
         {
-            if(patientDb.get(i).getNAME().equalsIgnoreCase(NAME))
+            if(patientDb.get(i).getNAME().equalsIgnoreCase(patientDb.get(i).getNAME()))
             {
-                if(patientDb.get(i).getNAME().equalsIgnoreCase(SURNAME))
+                if(patientDb.get(i).getNAME().equalsIgnoreCase(patientDb.get(i).getSURNAME()))
                 {
                     patientDb.get(i).setFEWER(fewer);
                     patientDb.get(i).setM_ACHE(M_ACHE);
