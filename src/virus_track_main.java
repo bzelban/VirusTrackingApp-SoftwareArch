@@ -447,6 +447,10 @@ class Android_VirusTrackAppBuild extends RawVirusTrackApp implements NativeFrame
         this.observers = observers;
     } //This default constructor is for Matching Super
 
+    public Android_VirusTrackAppBuild() throws ParseException {
+
+    }
+
     public void Android_VirusTrackAppBuild() throws ParseException {
 
     }
@@ -631,10 +635,7 @@ class Library_VirusTrackAppBuild extends RawVirusTrackApp implements NativeFrame
         return RawVirusTrackApp.rawApp("Library Virus Track App", "Ministry of Health Systems");
     }
 
-    LibraryReceive receive = new LibraryReceive();
-    LibrarySend send = new LibrarySend();
-
-    LibraryFacade lr = new LibraryFacade(receive, send);
+    
 
     //Observer Part
     private SubjectInterface patients;
@@ -832,7 +833,10 @@ public class virus_track_main {
         //RawVirusTrackApp VTA_Samsung = new Samsung_VirusTrackAppBuild();
         //RawVirusTrackApp VTA_Library = new Library_VirusTrackAppBuild();
         RawVirusTrackApp VTA_Apple = new Apple_VirusTrackAppBuild();
-        RawVirusTrackApp VTA_Library = new Apple_VirusTrackAppBuild();
+        RawVirusTrackApp VTA_Android = new Android_VirusTrackAppBuild();
+        RawVirusTrackApp VTA_Library = new Library_VirusTrackAppBuild();
+
+
 
 
 

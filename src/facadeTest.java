@@ -1,5 +1,15 @@
 //Client
+class Computer
+{
+    CPU cpu = new CPU();
+    Memory mem = new Memory();
+    HDD hdd = new HDD();
 
+    ComputerFacade af = new ComputerFacade(cpu, mem, hdd);
+
+
+
+}
 
 
 //Facade, All composition // IT'S COMPOSITE PATTERN A-LIKE
@@ -63,12 +73,8 @@ public class facadeTest {
 
     public static void main(String[] args) {
 
-        CPU cpu = new CPU();
-        Memory mem = new Memory();
-        HDD hdd = new HDD();
-
-        ComputerFacade cf = new ComputerFacade(cpu, mem, hdd);
-        cf.start();
+        Computer comp = new Computer();
+        comp.start();
 
     }
 }
