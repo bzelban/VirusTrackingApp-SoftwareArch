@@ -133,44 +133,44 @@ class MobileApp { //Volt-like
 
 class RawVirusTrackApp{ //Socket-like (SOURCE)
 
-    private String UserNAME;
-    private String UserSURNAME;
-    private int UserAGE;
-    private String UserADDRESS;
+    private String NAME;
+    private String SURNAME;
+    private int AGE;
+    private String ADDRESS;
     private boolean tempFEWER;
     private boolean tempM_ACHE;
     private boolean tempR_NOSE;
 
-    public String getUserNAME() {
-        return UserNAME;
+    public String getNAME() {
+        return NAME;
     }
 
-    public void setUserNAME(String userNAME) {
-        UserNAME = userNAME;
+    public void setNAME(String NAME) {
+        this.NAME = NAME;
     }
 
-    public String getUserSURNAME() {
-        return UserSURNAME;
+    public String getSURNAME() {
+        return SURNAME;
     }
 
-    public void setUserSURNAME(String userSURNAME) {
-        UserSURNAME = userSURNAME;
+    public void setSURNAME(String userSURNAME) {
+        this.SURNAME = SURNAME;
     }
 
-    public int getUserAGE() {
-        return UserAGE;
+    public int getAGE() {
+        return AGE;
     }
 
-    public void setUserAGE(int userAGE) {
-        UserAGE = userAGE;
+    public void setAGE(int AGE) {
+        this.AGE = AGE;
     }
 
-    public String getUserADDRESS() {
-        return UserADDRESS;
+    public String getADDRESS() {
+        return ADDRESS;
     }
 
-    public void setUserADDRESS(String userADDRESS) {
-        UserADDRESS = userADDRESS;
+    public void setADDRESS(String ADDRESS) {
+        this.ADDRESS = ADDRESS;
     }
 
     public boolean isTempFEWER() {
@@ -297,13 +297,13 @@ class Apple_VirusTrackAppBuild extends RawVirusTrackApp implements NativeFramewo
         Scanner sc = new Scanner(System.in);
 
         System.out.println("Name?: ");
-        setUserNAME(sc.next());
+        setNAME(sc.next());
         System.out.println("Surname?: ");
-        setUserSURNAME(sc.next());
+        setSURNAME(sc.next());
         System.out.println("Age?: ");
-        setUserAGE(sc.nextInt());
+        setAGE(sc.nextInt());
         System.out.println("Address?: ");
-        setUserADDRESS(sc.next());
+        setADDRESS(sc.next());
 
         //APPLE SPECIFIQUE
         read();
@@ -388,11 +388,11 @@ class Apple_VirusTrackAppBuild extends RawVirusTrackApp implements NativeFramewo
     {
         //if Any of the patient has some health anomalies, cast postMessage(this.getNAME(), this.getSURNAME())
 
-        patient_db.updateStatus(virus_track_main.patient_dbs ,this.getUserNAME(), this.getUserSURNAME(), this.isTempFEWER(), this.isTempM_ACHE(), this.isTempR_NOSE());
+        patient_db.updateStatus(virus_track_main.patient_dbs ,this.getNAME(), this.getSURNAME(), this.isTempFEWER(), this.isTempM_ACHE(), this.isTempR_NOSE());
 
         if(isTempFEWER() || isTempM_ACHE() || isTempR_NOSE())
         {
-            postMessage(this.getUserNAME(), this.getUserSURNAME());
+            postMessage(this.getNAME(), this.getSURNAME());
         }
 
     }
@@ -476,13 +476,13 @@ class Android_VirusTrackAppBuild extends RawVirusTrackApp implements NativeFrame
         Scanner sc = new Scanner(System.in);
 
         System.out.println("Name?: ");
-        setUserNAME(sc.next());
+        setNAME(sc.next());
         System.out.println("Surname?: ");
-        setUserSURNAME(sc.next());
+        setSURNAME(sc.next());
         System.out.println("Age?: ");
-        setUserAGE(sc.nextInt());
+        setAGE(sc.nextInt());
         System.out.println("Address?: ");
-        setUserADDRESS(sc.next());
+        setADDRESS(sc.next());
 
         //APPLE SPECIFIQUE
         get();
@@ -567,11 +567,11 @@ class Android_VirusTrackAppBuild extends RawVirusTrackApp implements NativeFrame
     {
         //if Any of the patient has some health anomalies, cast postMessage(this.getNAME(), this.getSURNAME())
 
-        patient_db.updateStatus(virus_track_main.patient_dbs ,this.getUserNAME(), this.getUserSURNAME(), this.isTempFEWER(), this.isTempM_ACHE(), this.isTempR_NOSE());
+        patient_db.updateStatus(virus_track_main.patient_dbs ,this.getNAME(), this.getSURNAME(), this.isTempFEWER(), this.isTempM_ACHE(), this.isTempR_NOSE());
 
         if(isTempFEWER() || isTempM_ACHE() || isTempR_NOSE())
         {
-            postMessage(this.getUserNAME(), this.getUserSURNAME());
+            postMessage(this.getNAME(), this.getSURNAME());
         }
 
     }
@@ -635,9 +635,91 @@ class Library_VirusTrackAppBuild extends RawVirusTrackApp implements NativeFrame
         return RawVirusTrackApp.rawApp("Library Virus Track App", "Ministry of Health Systems");
     }
 
-    
+    public void receive()
+    {
+        boolean loopControl = true;
 
-    //Observer Part
+        while(loopControl)
+        {
+
+
+        }
+
+    }
+
+    public void send()
+    {
+
+            //Adding new patient to database
+            int tempSendMenu = 0;
+            Scanner sc = new Scanner(System.in);
+
+            System.out.println("Name of the Patient");
+            setNAME(sc.next());
+            System.out.println("Surname of the Patient");
+            setSURNAME(sc.next());
+            System.out.println("Address of the Patient");
+            setADDRESS(sc.next());
+            System.out.println("Age of the Patient");
+            setAGE(sc.nextInt());
+
+
+            System.out.println("Fewer? 1 for True, 2 for False");
+            tempSendMenu = sc.nextInt();
+            if(tempSendMenu == 1 )
+            {
+                setTempFEWER(true);
+            }
+            else if(tempSendMenu == 2)
+            {
+                setTempFEWER(false);
+            }
+            else
+            {
+                System.out.println("Wrong input, DEFAULT FALSE");
+                setTempFEWER(false);
+            }
+
+            System.out.println("Muscle Ache? 1 for True, 2 for False");
+            tempSendMenu = sc.nextInt();
+            if(tempSendMenu == 1)
+            {
+
+                setTempM_ACHE(true);
+            }
+            else if(tempSendMenu == 2)
+            {
+
+                setTempM_ACHE(false);
+            }
+            else
+            {
+                System.out.println("Wrong input, DEFAULT FALSE");
+                setTempM_ACHE(false);
+            }
+
+            System.out.println("Runny Nose? 1 for True, 2 for False");
+            tempSendMenu = sc.nextInt();
+            if(tempSendMenu == 1)
+            {
+                setTempR_NOSE(true);
+            }
+            else if (tempSendMenu == 2)
+            {
+                setTempR_NOSE(false);
+
+            }
+            else
+            {
+                setTempR_NOSE(false);
+                System.out.println("Wrong input, DEFAULT FALSE");
+            }
+            patient_db.addNewPatient(virus_track_main.patient_dbs, getNAME(), getSURNAME(), getAGE(), getADDRESS(), isTempFEWER(), isTempM_ACHE(), isTempR_NOSE());
+
+    }
+
+
+    //Observing Part
     private SubjectInterface patients;
 
     @Override
@@ -662,134 +744,6 @@ class Library_VirusTrackAppBuild extends RawVirusTrackApp implements NativeFrame
     }
 }
 
-//////////////////////////////////////////////////////////////////////////////////
-
-// Auto.widgets
-//      This part represents facade for Library_VirusTrackAppBuild
-//      Also we can do to the others but if Time runs out, we will lose.
-
-class LibraryFacade
-{
-    private LibraryReceive receive;
-    private LibrarySend send;
-
-    public LibraryFacade(LibraryReceive receive, LibrarySend send) {
-        this.receive = receive;
-        this.send = send;
-    }
-
-    public void start()
-    {
-        while(true)
-        {
-
-            Scanner sc = new Scanner(System.in);
-            int tempMenu = 0;
-            System.out.println("Start Receive, Press 1\nStart Send, Press 2");
-            tempMenu = sc.nextInt();
-
-            if(tempMenu == 1)
-            {
-                receive.receive();
-            }
-            else if (tempMenu == 2)
-            {
-                send.send();
-            }
-            else
-            {
-                System.out.println("Wrong input! please try again...");
-            }
-        }
-    }
-}
-
-class LibraryReceive // NOT DONE YET
-{
-    boolean loopControl = true;
-
-    public void receive()
-    {
-        while(loopControl)
-        {
-            
-
-        }
-    }
-}
-
-class LibrarySend // Done
-{
-    int age = 0;
-    String name = " ", surname = " ", address = " ";
-    boolean fewer = false, r_nose = false, m_ache = false;
-    int tempSendMenu = 0;
-
-    public void send()
-    {
-        //Adding new patient to database
-
-        Scanner sc = new Scanner(System.in);
-
-        System.out.println("Name of the Patient");
-        name = sc.next();
-        System.out.println("Surname of the Patient");
-        surname = sc.next();
-        System.out.println("Address of the Patient");
-        address = sc.next();
-        System.out.println("Age of the Patient");
-        age = sc.nextInt();
-
-
-        System.out.println("Fewer? 1 for True, 2 for False");
-        tempSendMenu = sc.nextInt();
-        if(tempSendMenu == 1 )
-        {
-            fewer = true;
-        }
-        else if(tempSendMenu == 2)
-        {
-            fewer = false;
-        }
-        else
-        {
-            System.out.println("Wrong input, DEFAULT FALSE");
-        }
-
-        System.out.println("Muscle Ache? 1 for True, 2 for False");
-        tempSendMenu = sc.nextInt();
-        if(tempSendMenu == 1)
-        {
-            m_ache = true;
-        }
-        else if(tempSendMenu == 2)
-        {
-            m_ache = false;
-        }
-        else
-        {
-            System.out.println("Wrong input, DEFAULT FALSE");
-        }
-
-        System.out.println("Runny Nose? 1 for True, 2 for False");
-        tempSendMenu = sc.nextInt();
-        if(tempSendMenu == 1)
-        {
-            r_nose = true;
-        }
-        else if (tempSendMenu == 2)
-        {
-            r_nose = false;
-        }
-        else
-        {
-            System.out.println("Wrong input, DEFAULT FALSE");
-        }
-        patient_db.addNewPatient(virus_track_main.patient_dbs, name, surname, age, address, false, false, false);
-    }
-
-}
-
 
 
 ///////////////////////////////////////////////////////////////////////////////////
@@ -809,6 +763,13 @@ interface LibraryAppObserver //Observer
     void setPatients(SubjectInterface patients);
 
 } //d
+
+/////////////////////////////////////////////////////////////////////////////////////
+
+
+
+// Main_auto
+//      This art represents facade for Main(requester)
 
 /////////////////////////////////////////////////////////////////////////////////////
 
@@ -837,13 +798,7 @@ public class virus_track_main {
         RawVirusTrackApp VTA_Library = new Library_VirusTrackAppBuild();
 
 
-
-
-
-        // If any patient condition goes true,
-
-
-
+        //Need to call Facade of Main
 
 
 
