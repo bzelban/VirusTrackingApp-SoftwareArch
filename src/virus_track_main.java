@@ -292,6 +292,17 @@ class Apple_VirusTrackAppBuild extends RawVirusTrackApp implements NativeFramewo
     public MobileApp buildForLibrary() {return null;}
 
     @Override
+    public void register(LibraryAppObserver observer) { //DONE
+        if (observer == null) throw new NullPointerException(("No Observer Found"));
+
+        if(!observers.contains(observer))
+        {
+            observers.add(observer);
+        }
+
+    }
+
+    @Override
     public void firstRun() throws InterruptedException {
 
         System.out.println("(AppleApp");
@@ -406,16 +417,7 @@ class Apple_VirusTrackAppBuild extends RawVirusTrackApp implements NativeFramewo
     private String message;
 
 
-    @Override
-    public void register(LibraryAppObserver observer) { //DONE
-        if (observer == null) throw new NullPointerException(("No Observer Found"));
 
-        if(!observers.contains(observer))
-        {
-            observers.add(observer);
-        }
-
-    }
 
     @Override
     public void notifyObserver() { // Done
@@ -944,16 +946,17 @@ public class virus_track_main {
         RawVirusTrackApp VTA_Library2 = new Library_VirusTrackAppBuild();
         RawVirusTrackApp VTA_Library3 = new Library_VirusTrackAppBuild();
 
-
+        List
 
         RawVirusTrackApp VTA_Apple = new Apple_VirusTrackAppBuild();
         RawVirusTrackApp VTA_Android = new Android_VirusTrackAppBuild();
         RawVirusTrackApp VTA_Library = new Library_VirusTrackAppBuild();
 
+        VTA_Apple.register(VTA_Library0);
+        
         VTA_Apple.firstRun();
 
         //ObserverTest
-
 
         //Need to call Facade part //DONE
 
