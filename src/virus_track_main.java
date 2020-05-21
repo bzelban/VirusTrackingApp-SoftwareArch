@@ -647,6 +647,8 @@ class Library_VirusTrackAppBuild extends RawVirusTrackApp implements NativeFrame
 
     }
 
+    // We also wanted to add a "You are away from main location, please go home" like notification
+    // but the time isn't enough for lazy students.
     public void send()
     {
 

@@ -68,12 +68,31 @@ class Memory
     }
 }
 
+class testOto
+{
+    CPU cpu = new CPU();
+    Memory mem = new Memory();
+    HDD hdd = new HDD();
+
+    ComputerFacade comp = new ComputerFacade(cpu, mem, hdd);
+
+    public void startComp()
+    {
+        comp.start();
+    }
+}
 
 public class facadeTest {
 
     public static void main(String[] args) {
 
-        Computer comp = new Computer();
+        CPU cpu = new CPU();
+        Memory mem = new Memory();
+        HDD hdd = new HDD();
+
+
+        ComputerFacade comp = new ComputerFacade(cpu, mem, hdd);
+        comp.start();
 
     }
 }
