@@ -120,11 +120,6 @@ class patient_db {
                     patientDb.get(i).setM_ACHE(M_ACHE);
                     patientDb.get(i).setR_NOSE(R_NOSE);
                 }
-                else
-                {
-                    System.out.println("No Patient Found!! (surname false)");
-                }
-
             }
             else
             {

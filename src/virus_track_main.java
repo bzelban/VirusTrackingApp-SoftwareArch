@@ -300,11 +300,14 @@ class Apple_VirusTrackAppBuild extends RawVirusTrackApp implements NativeFramewo
         System.out.println("Name?: ");
         setNAME(sc.next());
         System.out.println("Surname?: ");
-        setSURNAME(sc.next());
+        String tempStr = sc.next();
+        this.setSURNAME(tempStr);
         System.out.println("Age?: ");
         setAGE(sc.nextInt());
         System.out.println("Address?: ");
         setADDRESS(sc.next());
+        sc.nextLine();
+
 
         //APPLE SPECIFIQUE
         read();
@@ -405,7 +408,7 @@ class Apple_VirusTrackAppBuild extends RawVirusTrackApp implements NativeFramewo
 
     @Override
     public void register(LibraryAppObserver observer) { //DONE
-        if (observer == null) throw new NullPointerException(("No Observer Found"));
+        if (observer == null) //throw new NullPointerException(("No Observer Found"));
 
         if(!observers.contains(observer))
         {
@@ -939,7 +942,10 @@ public class virus_track_main {
         RawVirusTrackApp VTA_Library = new Library_VirusTrackAppBuild();
 
 
-        //Need to call Facade of Main
+
+        VTA_Apple.firstRun();
+
+        //Need to call Facade part
 
         AppleMainFacade appleTest = new AppleMainFacade();
         AndroidMainFacade androidTest = new AndroidMainFacade();
@@ -947,7 +953,7 @@ public class virus_track_main {
 
         MainFacade mf = new MainFacade(VTA_Apple, VTA_Android, VTA_Library, appleTest, androidTest, libraryTest);
 
-        mf.Start();
+        //mf.Start();
 
         ////////////////////////////////////////////
         //This part is gibberish
