@@ -294,6 +294,7 @@ class Apple_VirusTrackAppBuild extends RawVirusTrackApp implements NativeFramewo
     @Override
     public void firstRun() throws InterruptedException {
 
+        System.out.println("(AppleApp");
         Scanner sc = new Scanner(System.in);
 
         System.out.println("Name?: ");
@@ -782,22 +783,51 @@ class MainFacade
     Android_VirusTrackAppBuild androidApp; //= virus_track_main.VTA_Android;
     Library_VirusTrackAppBuild libraryApp; //
 
-    public MainFacade(Apple_VirusTrackAppBuild appleApp, Android_VirusTrackAppBuild androidApp, Library_VirusTrackAppBuild libraryApp, AppleMainFacade appleF, AndroidMainFacade androidF, LibraryMainFacade libraryF)
+    public MainFacade(RawVirusTrackApp appleApp, RawVirusTrackApp androidApp, RawVirusTrackApp libraryApp, AppleMainFacade appleF, AndroidMainFacade androidF, LibraryMainFacade libraryF)
     {
-        this.appleApp = appleApp;
-        this.androidApp = androidApp;
-        this.libraryApp = libraryApp;
+        //We have to cast as SocketAdapter Implementation to not corrupt our adapter pattern
+        //Or myBrain.exe not found (note from Bedirhan)
+        this.appleApp = (Apple_VirusTrackAppBuild) appleApp;
+        this.androidApp = (Android_VirusTrackAppBuild) androidApp;
+        this.libraryApp = (Library_VirusTrackAppBuild) libraryApp;
 
         this.AppleF = appleF;
         this.AndroidF = androidF;
         this.LibraryF = libraryF;
-
     }
 
-    public void Start()
-    {
+    public void Start() throws InterruptedException {
 
-        LibraryF.LibraryMenu(libraryApp);
+        System.out.println("Starting the Virus Tracking App Simulator\n");
+        boolean loopControl = true;
+        int tempStartMenuInt = 0;
+        Scanner sc = new Scanner(System.in);
+
+        while(loopControl)
+        {
+            System.out.println("\n To start Apple Virus Track App Simulator enter 1\n To start Samsung Virus Track App Simulator press 2\n To start Library Virus Track App Simulator enter 3\n To terminate enter 3 ");
+            tempStartMenuInt = sc.nextInt();
+            if( )
+            {
+
+            }
+            else if
+            {
+
+            }
+            else if
+            {
+
+            }
+            else
+            {
+
+            }
+        }
+
+        AppleF.AppleMenu(appleApp);
+        //AndroidF.AndroidMenu(androidApp);
+        //LibraryF.LibraryMenu(libraryApp);
 
     }
 
@@ -808,13 +838,13 @@ class AppleMainFacade
 {
     boolean loopControl = true;
     int tempMenu = 0;
-    public void AppleMenu(Apple_VirusTrackAppBuild app) throws InterruptedException {
-        System.out.println("Note: To test, use Name: ali, Surname: uzun, Age: 40, Address: konak\n\n");
-        System.out.println("Welcome to Virus Track App for Apple");
-        while(loopControl)
-        {
-            app.firstRun();
-        }
+    public void AppleMenu(Apple_VirusTrackAppBuild app) throws InterruptedException
+    {
+        System.out.println("\nWelcome to Virus Track App for Apple\n");
+        System.out.println("This has also a AutoStart function, but to try other apps, \nyou have to stop and run again \nI don't know how to trap a signal in Java");
+        System.out.println("\nNote: To test, use Name: ali, Surname: uzun, Age: 40, Address: konak\n\n");
+
+        app.firstRun();
 
     }
 }
@@ -823,13 +853,13 @@ class AndroidMainFacade
 {
     boolean loopControl = true;
     int tempMenu = 0;
-    public void AppleMenu(Android_VirusTrackAppBuild app) throws InterruptedException {
-        System.out.println("Note: To test, use Name: ali, Surname: uzun, Age: 40, Address: konak\n\n");
-        System.out.println("Welcome to Virus Track App for Samsung");
-        while(loopControl)
-        {
-            app.firstRun();
-        }
+    public void AndroidMenu(Android_VirusTrackAppBuild app) throws InterruptedException
+    {
+        System.out.println("\nWelcome to Virus Track App for Apple\n");
+        System.out.println("This has also a AutoStart function, but to try other apps, \nyou have to stop and run again \nI don't know how to trap a signal in Java");
+        System.out.println("\nNote: To test, use Name: ali, Surname: uzun, Age: 40, Address: konak\n\n");
+
+        app.firstRun();
     }
 
 }
@@ -855,6 +885,7 @@ class LibraryMainFacade
             else if(tempMenu == 2)
             {
                 System.out.println("New Patient Menu");
+                app.send();
             }
             else if(tempMenu == 3)
             {
@@ -865,7 +896,6 @@ class LibraryMainFacade
             {
                 System.out.println("Wrong choice, try again");
             }
-
         }
     }
 
@@ -878,9 +908,9 @@ public class virus_track_main {
 
     public static ArrayList<patient_db> patient_dbs;
 
-    public static RawVirusTrackApp VTA_Apple;
-    public static RawVirusTrackApp VTA_Android;
-    public static RawVirusTrackApp VTA_Library;
+    //public static RawVirusTrackApp VTA_Apple;
+    //public static RawVirusTrackApp VTA_Android;
+    //public static RawVirusTrackApp VTA_Library;
 
     public static void main(String[] args) throws ParseException, InterruptedException {
 
@@ -893,16 +923,15 @@ public class virus_track_main {
         //Creating a Database
         patient_dbs = new ArrayList<>();
         patient_dbs = patient_db._createDummyTable();
-        //Test User: ali uzun 40 konak
 
         //Adaptor example here, Need main for User Requests.
         //RawVirusTrackApp VTA_Apple = new Apple_VirusTrackAppBuild();
         //RawVirusTrackApp VTA_Android = new Android_VirusTrackAppBuild();
         //RawVirusTrackApp VTA_Library = new Library_VirusTrackAppBuild();
 
-        VTA_Apple = new Apple_VirusTrackAppBuild();
-        VTA_Android = new Android_VirusTrackAppBuild();
-        VTA_Library = new Library_VirusTrackAppBuild();
+        RawVirusTrackApp VTA_Apple = new Apple_VirusTrackAppBuild();
+        RawVirusTrackApp VTA_Android = new Android_VirusTrackAppBuild();
+        RawVirusTrackApp VTA_Library = new Library_VirusTrackAppBuild();
 
 
         //Need to call Facade of Main
