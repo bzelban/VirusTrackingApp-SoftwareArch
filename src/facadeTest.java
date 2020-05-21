@@ -6,9 +6,6 @@ class Computer
     HDD hdd = new HDD();
 
     ComputerFacade af = new ComputerFacade(cpu, mem, hdd);
-
-
-
 }
 
 

@@ -687,21 +687,10 @@ class Library_VirusTrackAppBuild extends RawVirusTrackApp implements NativeFrame
             if(tempSendMenu == 1)
             {
 
-<<<<<<< HEAD
                 setTempM_ACHE(true);
             }
             else if(tempSendMenu == 2)
             {
-=======
-    public void receive()
-    {
-
-
-        while(loopControl)
-        {
-
-            
->>>>>>> parent of 47bf763... A
 
                 setTempM_ACHE(false);
             }
@@ -721,7 +710,6 @@ class Library_VirusTrackAppBuild extends RawVirusTrackApp implements NativeFrame
             {
                 setTempR_NOSE(false);
 
-<<<<<<< HEAD
             }
             else
             {
@@ -729,14 +717,6 @@ class Library_VirusTrackAppBuild extends RawVirusTrackApp implements NativeFrame
                 System.out.println("Wrong input, DEFAULT FALSE");
             }
             patient_db.addNewPatient(virus_track_main.patient_dbs, getNAME(), getSURNAME(), getAGE(), getADDRESS(), isTempFEWER(), isTempM_ACHE(), isTempR_NOSE());
-=======
-    public void send()
-    {
-
-
-
-        //Adding new patient to database
->>>>>>> parent of 47bf763... A
 
     }
 
