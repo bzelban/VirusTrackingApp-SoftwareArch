@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
+class patient_db{
 
-class patient_db {
 
     String NAME;
     String SURNAME;
@@ -10,7 +10,6 @@ class patient_db {
     boolean FEWER;
     boolean M_ACHE;
     boolean R_NOSE;
-
 
     public patient_db() {
 
@@ -80,26 +79,16 @@ class patient_db {
         return ADDRESS;
     }
 
-
     public void setADDRESS(String ADDRESS) {
         this.ADDRESS = ADDRESS;
     }
 
-    public ArrayList<patient_db> _createPatientTable() {
-
-        ArrayList<patient_db> patientDbList = new ArrayList<>();
-        patientDbList.add(new patient_db("TEST", "TEST", 99, "x city, y street, z condo", false, false, false));
-
-        return patientDbList;
-    }
 
 
     public String toString(patient_db x) {
         String print = x.getNAME() + "  " + x.getSURNAME() + " Age: " + x.getAGE() +  " Address: " + x.getADDRESS() +  " Fewer?: " + x.getFEWER() + " Muscle Ache?: " + x.getM_ACHE() + " Runny Nose?:" + x.getR_NOSE();
         return print;
     }
-
-
 
     public void print(ArrayList<patient_db> patientDbTable) {
 
@@ -128,6 +117,8 @@ class patient_db {
         }
 
 
+
+
         //TO-DO
         //  Need notify for update patient
 
@@ -141,7 +132,7 @@ class patient_db {
     }
 
 
-    public static ArrayList<patient_db> _createDummyTable()
+    public static ArrayList<patient_db> _createTable()
     {
         ArrayList<patient_db> patients = new ArrayList<>();
         patients.add(new patient_db("testNAME", "testSURNAME", 99, "testADDRESS", false, false, false));

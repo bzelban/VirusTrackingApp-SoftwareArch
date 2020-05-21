@@ -1,45 +1,35 @@
 /*
         Virus Tracking Application
-
     Bedirhan Z. ELBAN
     Berk YILMAZ
     Mert DOYURGAN
     H. Tuğgün ASRAK
-
 */
 /*
 // THE FACTORY
 // In here, 2 different factories creating specific phones.
 // TO-DO: Add Storage!
 // Note: Lecturer doesn't want this part. NEGATIVE!!!
-
 abstract class CellPhone {
     abstract public String displayBrand();
     abstract public String displayModel();
     abstract public void displayAll();
 }
-
 class ApplePhone extends CellPhone{
     protected String brand;
     protected String model;
-
     @Override
     public String displayBrand(){ return brand; }
-
     @Override
     public String displayModel(){ return model; }
-
     @Override
     public void displayAll(){ displayBrand(); displayModel(); }
-
     public ApplePhone(String brand, String model)
     {
         this.brand = brand;
         this.model = model;
     }
-
 }
-
 abstract class AppleFactory {
     public static CellPhone createApple(String brand, String model)
     {
@@ -54,28 +44,21 @@ abstract class AppleFactory {
        return null;
     }
 }
-
 class SamsungPhone extends CellPhone{
     protected String brand;
     protected String model;
-
     @Override
     public String displayBrand(){ return brand; }
-
     @Override
     public String displayModel(){ return model; }
-
     @Override
     public void displayAll(){ displayBrand(); displayModel(); }
-
     public SamsungPhone(String brand, String model)
     {
         this.brand = brand;
         this.model = model;
     }
-
 }
-
 abstract class SamsungFactory{
     public static CellPhone createSamsung(String brand, String model)
     {
@@ -90,7 +73,6 @@ abstract class SamsungFactory{
         return null;
     }
 }
-
 ////////////////////////////////////////////////////////////////////////////////////
 */
 
@@ -270,14 +252,15 @@ interface NativeFramework{ //SocketAdapter-like
 // Class Adapter SOCKET-ADAPTER-IMPLEMENTATION-Like
 class Apple_VirusTrackAppBuild extends RawVirusTrackApp implements NativeFramework, SubjectInterface {
 
-
+    /*
     public Apple_VirusTrackAppBuild(List<LibraryAppObserver> observers) throws ParseException {
         this.observers = observers;
     } //This default constructor is for Matching Super
+    */
 
-    public Apple_VirusTrackAppBuild() throws ParseException { }
+    public Apple_VirusTrackAppBuild() throws ParseException {
 
-
+    }
 
     @Override
     public MobileApp buildForApple()
@@ -305,7 +288,7 @@ class Apple_VirusTrackAppBuild extends RawVirusTrackApp implements NativeFramewo
     @Override
     public void firstRun() throws InterruptedException {
 
-        System.out.println("(AppleApp");
+        System.out.println("(AppleApp)");
         Scanner sc = new Scanner(System.in);
 
         System.out.println("Name?: ");
@@ -328,6 +311,7 @@ class Apple_VirusTrackAppBuild extends RawVirusTrackApp implements NativeFramewo
         while(true)
         {
             TimeUnit.MINUTES.sleep(5);
+            System.out.println("Checking time interval");
 
             clockFunction(oldDate);
 
@@ -407,7 +391,7 @@ class Apple_VirusTrackAppBuild extends RawVirusTrackApp implements NativeFramewo
 
         if(isTempFEWER() || isTempM_ACHE() || isTempR_NOSE())
         {
-            postMessage(this.getNAME(), this.getSURNAME());
+            //postMessage(this.getNAME(), this.getSURNAME());
         }
 
     }
@@ -448,14 +432,16 @@ class Apple_VirusTrackAppBuild extends RawVirusTrackApp implements NativeFramewo
 
 class Android_VirusTrackAppBuild extends RawVirusTrackApp implements NativeFramework, SubjectInterface {
 
-
-    Android_VirusTrackAppBuild(List<LibraryAppObserver> observers) throws ParseException {
+    /*
+    public Android_VirusTrackAppBuild(List<LibraryAppObserver> observers) throws ParseException {
         this.observers = observers;
     } //This default constructor is for Matching Super
+    */
 
     public Android_VirusTrackAppBuild() throws ParseException {
 
     }
+
 
     public void Android_VirusTrackAppBuild() throws ParseException {
 
@@ -479,6 +465,7 @@ class Android_VirusTrackAppBuild extends RawVirusTrackApp implements NativeFrame
     @Override
     public void firstRun() throws InterruptedException {
 
+        System.out.println("(Samsung App)");
         Scanner sc = new Scanner(System.in);
 
         System.out.println("Name?: ");
@@ -498,7 +485,7 @@ class Android_VirusTrackAppBuild extends RawVirusTrackApp implements NativeFrame
         while(true)
         {
             TimeUnit.MINUTES.sleep(5);
-
+            System.out.println("Checking time interval");
             clockFunction(oldDate);
 
             if(this.isClockIntervalCheck() == true)
@@ -518,11 +505,11 @@ class Android_VirusTrackAppBuild extends RawVirusTrackApp implements NativeFrame
 
         System.out.println("Fewer?: (Y)es or (N)o");
         temp = sc.next();
-        if(temp == "Y" || temp == "y" )
+        if(temp.equalsIgnoreCase("Y") || temp.equalsIgnoreCase("y") )
         {
             setTempFEWER(true);
         }
-        else if (temp == "N" || temp == "n")
+        else if (temp.equalsIgnoreCase("N") || temp.equalsIgnoreCase("n") )
         {
             setTempFEWER(false);
 
@@ -535,11 +522,11 @@ class Android_VirusTrackAppBuild extends RawVirusTrackApp implements NativeFrame
 
         System.out.println("Muscle Ache?: (Y)es or (N)o");
         temp = sc.next();
-        if(temp == "Y" || temp == "y" )
+        if(temp.equalsIgnoreCase("Y") || temp.equalsIgnoreCase("y") )
         {
             setTempM_ACHE(true);
         }
-        else if (temp == "N" || temp == "n")
+        else if (temp.equalsIgnoreCase("N")  || temp.equalsIgnoreCase("n") )
         {
             setTempM_ACHE(false);
         }
@@ -551,12 +538,12 @@ class Android_VirusTrackAppBuild extends RawVirusTrackApp implements NativeFrame
 
         System.out.println("Runny Nose?: (Y)es or (N)o");
         temp = sc.next();
-        if(temp == "Y" || temp == "y" )
+        if(temp.equalsIgnoreCase("Y") || temp.equalsIgnoreCase("y") )
         {
             setTempR_NOSE(true);
 
         }
-        else if (temp == "N" || temp == "n")
+        else if (temp.equalsIgnoreCase("N") || temp.equalsIgnoreCase("n"))
         {
             setTempR_NOSE(false);
 
@@ -577,7 +564,7 @@ class Android_VirusTrackAppBuild extends RawVirusTrackApp implements NativeFrame
 
         if(isTempFEWER() || isTempM_ACHE() || isTempR_NOSE())
         {
-            postMessage(this.getNAME(), this.getSURNAME());
+            //postMessage(this.getNAME(), this.getSURNAME());
         }
 
     }
@@ -659,71 +646,71 @@ class Library_VirusTrackAppBuild extends RawVirusTrackApp implements NativeFrame
     public void send()
     {
 
-            //Adding new patient to database
-            int tempSendMenu = 0;
-            Scanner sc = new Scanner(System.in);
+        //Adding new patient to database
+        int tempSendMenu = 0;
+        Scanner sc = new Scanner(System.in);
 
-            System.out.println("Name of the Patient");
-            setNAME(sc.next());
-            System.out.println("Surname of the Patient");
-            setSURNAME(sc.next());
-            System.out.println("Address of the Patient");
-            setADDRESS(sc.next());
-            System.out.println("Age of the Patient");
-            setAGE(sc.nextInt());
+        System.out.println("Name of the Patient");
+        setNAME(sc.next());
+        System.out.println("Surname of the Patient");
+        setSURNAME(sc.next());
+        System.out.println("Address of the Patient");
+        setADDRESS(sc.next());
+        System.out.println("Age of the Patient");
+        setAGE(sc.nextInt());
 
 
-            System.out.println("Fewer? 1 for True, 2 for False");
-            tempSendMenu = sc.nextInt();
-            if(tempSendMenu == 1 )
-            {
-                setTempFEWER(true);
-            }
-            else if(tempSendMenu == 2)
-            {
-                setTempFEWER(false);
-            }
-            else
-            {
-                System.out.println("Wrong input, DEFAULT FALSE");
-                setTempFEWER(false);
-            }
+        System.out.println("Fewer? 1 for True, 2 for False");
+        tempSendMenu = sc.nextInt();
+        if(tempSendMenu == 1 )
+        {
+            setTempFEWER(true);
+        }
+        else if(tempSendMenu == 2)
+        {
+            setTempFEWER(false);
+        }
+        else
+        {
+            System.out.println("Wrong input, DEFAULT FALSE");
+            setTempFEWER(false);
+        }
 
-            System.out.println("Muscle Ache? 1 for True, 2 for False");
-            tempSendMenu = sc.nextInt();
-            if(tempSendMenu == 1)
-            {
+        System.out.println("Muscle Ache? 1 for True, 2 for False");
+        tempSendMenu = sc.nextInt();
+        if(tempSendMenu == 1)
+        {
 
-                setTempM_ACHE(true);
-            }
-            else if(tempSendMenu == 2)
-            {
+            setTempM_ACHE(true);
+        }
+        else if(tempSendMenu == 2)
+        {
 
-                setTempM_ACHE(false);
-            }
-            else
-            {
-                System.out.println("Wrong input, DEFAULT FALSE");
-                setTempM_ACHE(false);
-            }
+            setTempM_ACHE(false);
+        }
+        else
+        {
+            System.out.println("Wrong input, DEFAULT FALSE");
+            setTempM_ACHE(false);
+        }
 
-            System.out.println("Runny Nose? 1 for True, 2 for False");
-            tempSendMenu = sc.nextInt();
-            if(tempSendMenu == 1)
-            {
-                setTempR_NOSE(true);
-            }
-            else if (tempSendMenu == 2)
-            {
-                setTempR_NOSE(false);
+        System.out.println("Runny Nose? 1 for True, 2 for False");
+        tempSendMenu = sc.nextInt();
+        if(tempSendMenu == 1)
+        {
+            setTempR_NOSE(true);
+        }
+        else if (tempSendMenu == 2)
+        {
+            setTempR_NOSE(false);
 
-            }
-            else
-            {
-                setTempR_NOSE(false);
-                System.out.println("Wrong input, DEFAULT FALSE");
-            }
-            patient_db.addNewPatient(virus_track_main.patient_dbs, getNAME(), getSURNAME(), getAGE(), getADDRESS(), isTempFEWER(), isTempM_ACHE(), isTempR_NOSE());
+        }
+        else
+        {
+            setTempR_NOSE(false);
+            System.out.println("Wrong input, DEFAULT FALSE");
+        }
+        patient_db.addNewPatient(virus_track_main.patient_dbs, getNAME(), getSURNAME(), getAGE(), getADDRESS(), isTempFEWER(), isTempM_ACHE(), isTempR_NOSE());
 
     }
 
@@ -890,12 +877,12 @@ class LibraryMainFacade
             if(tempMenu == 1)
             {
                 System.out.println("List Menu ");
-                app.receive();
+                //app.receive();
             }
             else if(tempMenu == 2)
             {
                 System.out.println("New Patient Menu");
-                app.send();
+                //app.send();
             }
             else if(tempMenu == 3)
             {
@@ -932,7 +919,7 @@ public class virus_track_main {
 
         //Creating a Database
         patient_dbs = new ArrayList<>();
-        patient_dbs = patient_db._createDummyTable();
+        patient_dbs = patient_db._createTable();
 
         //Adaptor example here, Need main for User Requests.
         //RawVirusTrackApp VTA_Apple = new Apple_VirusTrackAppBuild();
@@ -940,23 +927,26 @@ public class virus_track_main {
         //RawVirusTrackApp VTA_Library = new Library_VirusTrackAppBuild();
 
 
-        //First creating different libraries
+        //First creating different libraries as Observers
         RawVirusTrackApp VTA_Library0 = new Library_VirusTrackAppBuild();
         RawVirusTrackApp VTA_Library1 = new Library_VirusTrackAppBuild();
         RawVirusTrackApp VTA_Library2 = new Library_VirusTrackAppBuild();
         RawVirusTrackApp VTA_Library3 = new Library_VirusTrackAppBuild();
 
-        List
 
+        //Creating for the simulation
         RawVirusTrackApp VTA_Apple = new Apple_VirusTrackAppBuild();
         RawVirusTrackApp VTA_Android = new Android_VirusTrackAppBuild();
         RawVirusTrackApp VTA_Library = new Library_VirusTrackAppBuild();
 
-        VTA_Apple.register(VTA_Library0);
-        
-        VTA_Apple.firstRun();
 
-        //ObserverTest
+        //VTA_Apple.register(VTA_Library0);
+        //in java, something happened and something not works.
+        //Can't use the object part(like VTA_Apple.register()) if multiple implementations of interfaces.
+        //Can't show the observer as simulation, Sorry.
+        //Because, some parts related to observer pattern is assigned as comment.
+        //VTA_Apple.set() > postMessage() & VTA_Android.set > postMessage()
+
 
         //Need to call Facade part //DONE
 
@@ -966,31 +956,37 @@ public class virus_track_main {
 
         MainFacade mf = new MainFacade(VTA_Apple, VTA_Android, VTA_Library, appleTest, androidTest, libraryTest);
 
-        //mf.Start();
-
-        ////////////////////////////////////////////
-        //This part is gibberish
-
-        //Need Plots
-
-        //Prologue
-        //Meanwhile in Netherland
-
-
-        //Act 1, Baking and Serving
-        //Consumer will buy some phones
-        //System.out.println("BestBuy Selling Samsung and Apple");
-
-
-        //Act 2, Uvid-Strikes-Back
-        //Ill people installing app on phone
-        //  sending reports
+        mf.Start();
 
 
 
-        //Act 3, Health Ministry On Duty
+
+
 
     }
 
 
 }
+
+
+////////////////////////////////////////////
+//This part is gibberish
+
+//Need Plots
+
+//Prologue
+//Meanwhile in Netherland
+
+
+//Act 1, Baking and Serving
+//Consumer will buy some phones
+//System.out.println("BestBuy Selling Samsung and Apple");
+
+
+//Act 2, Uvid-Strikes-Back
+//Ill people installing app on phone
+//  sending reports
+
+
+
+//Act 3, Health Ministry On Duty
