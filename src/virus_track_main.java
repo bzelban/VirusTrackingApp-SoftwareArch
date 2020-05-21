@@ -271,13 +271,13 @@ interface NativeFramework{ //SocketAdapter-like
 class Apple_VirusTrackAppBuild extends RawVirusTrackApp implements NativeFramework, SubjectInterface {
 
 
-    Apple_VirusTrackAppBuild(List<LibraryAppObserver> observers) throws ParseException {
+    public Apple_VirusTrackAppBuild(List<LibraryAppObserver> observers) throws ParseException {
         this.observers = observers;
     } //This default constructor is for Matching Super
 
-    public Apple_VirusTrackAppBuild() throws ParseException {
+    public Apple_VirusTrackAppBuild() throws ParseException { }
 
-    }
+
 
     @Override
     public MobileApp buildForApple()
@@ -408,7 +408,7 @@ class Apple_VirusTrackAppBuild extends RawVirusTrackApp implements NativeFramewo
 
     @Override
     public void register(LibraryAppObserver observer) { //DONE
-        if (observer == null) //throw new NullPointerException(("No Observer Found"));
+        if (observer == null) throw new NullPointerException(("No Observer Found"));
 
         if(!observers.contains(observer))
         {
@@ -433,7 +433,7 @@ class Apple_VirusTrackAppBuild extends RawVirusTrackApp implements NativeFramewo
 
     public void postMessage(String name, String surname)
     {
-        System.out.println("This guy needs help! Name: " + name + " Surname: " + surname);
+        //System.out.println("This guy needs help! Name: " + name + " Surname: " + surname);
         notifyObserver();
     }
 
@@ -937,15 +937,25 @@ public class virus_track_main {
         //RawVirusTrackApp VTA_Android = new Android_VirusTrackAppBuild();
         //RawVirusTrackApp VTA_Library = new Library_VirusTrackAppBuild();
 
+
+        //First creating different libraries
+        RawVirusTrackApp VTA_Library0 = new Library_VirusTrackAppBuild();
+        RawVirusTrackApp VTA_Library1 = new Library_VirusTrackAppBuild();
+        RawVirusTrackApp VTA_Library2 = new Library_VirusTrackAppBuild();
+        RawVirusTrackApp VTA_Library3 = new Library_VirusTrackAppBuild();
+
+
+
         RawVirusTrackApp VTA_Apple = new Apple_VirusTrackAppBuild();
         RawVirusTrackApp VTA_Android = new Android_VirusTrackAppBuild();
         RawVirusTrackApp VTA_Library = new Library_VirusTrackAppBuild();
 
-
-
         VTA_Apple.firstRun();
 
-        //Need to call Facade part
+        //ObserverTest
+
+
+        //Need to call Facade part //DONE
 
         AppleMainFacade appleTest = new AppleMainFacade();
         AndroidMainFacade androidTest = new AndroidMainFacade();
