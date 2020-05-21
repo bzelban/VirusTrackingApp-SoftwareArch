@@ -635,7 +635,8 @@ class Library_VirusTrackAppBuild extends RawVirusTrackApp implements NativeFrame
         return RawVirusTrackApp.rawApp("Library Virus Track App", "Ministry of Health Systems");
     }
 
-    public void receive()
+
+    public static void receive()
     {
         boolean loopControl = true;
 
@@ -768,16 +769,118 @@ interface LibraryAppObserver //Observer
 
 /////////////////////////////////////////////////////////////////////////////////////
 
-
-
 // Main_auto
-//      This art represents facade for Main(requester)
+//      This part represents facade for Main(requester)
+
+class MainFacade
+{
+    private AppleMainFacade AppleF;
+    private AndroidMainFacade AndroidF;
+    private LibraryMainFacade LibraryF;
+
+    Apple_VirusTrackAppBuild appleApp; //= virus_track_main.VTA_Apple;
+    Android_VirusTrackAppBuild androidApp; //= virus_track_main.VTA_Android;
+    Library_VirusTrackAppBuild libraryApp; //
+
+    public MainFacade(Apple_VirusTrackAppBuild appleApp, Android_VirusTrackAppBuild androidApp, Library_VirusTrackAppBuild libraryApp, AppleMainFacade appleF, AndroidMainFacade androidF, LibraryMainFacade libraryF)
+    {
+        this.appleApp = appleApp;
+        this.androidApp = androidApp;
+        this.libraryApp = libraryApp;
+
+        this.AppleF = appleF;
+        this.AndroidF = androidF;
+        this.LibraryF = libraryF;
+
+    }
+
+    public void Start()
+    {
+
+        LibraryF.LibraryMenu(libraryApp);
+
+    }
+
+
+}
+
+class AppleMainFacade
+{
+    boolean loopControl = true;
+    int tempMenu = 0;
+    public void AppleMenu(Apple_VirusTrackAppBuild app) throws InterruptedException {
+        System.out.println("Note: To test, use Name: ali, Surname: uzun, Age: 40, Address: konak\n\n");
+        System.out.println("Welcome to Virus Track App for Apple");
+        while(loopControl)
+        {
+            app.firstRun();
+        }
+
+    }
+}
+
+class AndroidMainFacade
+{
+    boolean loopControl = true;
+    int tempMenu = 0;
+    public void AppleMenu(Android_VirusTrackAppBuild app) throws InterruptedException {
+        System.out.println("Note: To test, use Name: ali, Surname: uzun, Age: 40, Address: konak\n\n");
+        System.out.println("Welcome to Virus Track App for Samsung");
+        while(loopControl)
+        {
+            app.firstRun();
+        }
+    }
+
+}
+
+class LibraryMainFacade
+{
+    boolean loopControl = true;
+    boolean loopSub = true;
+    int tempMenu = 0;
+    public void LibraryMenu(Library_VirusTrackAppBuild app)
+    {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Welcome to Library part of Virus Track APP");
+        while(loopControl)
+        {
+            System.out.println("Enter 1 to List Menu (receive)\nEnter 2 to add new patient menu (send)\nEnter 3 to exit from Library Simulation ");
+            tempMenu = sc.nextInt();
+            if(tempMenu == 1)
+            {
+                System.out.println("List Menu ");
+                app.receive();
+            }
+            else if(tempMenu == 2)
+            {
+                System.out.println("New Patient Menu");
+            }
+            else if(tempMenu == 3)
+            {
+                System.out.println("Exiting");
+                loopControl = false;
+            }
+            else
+            {
+                System.out.println("Wrong choice, try again");
+            }
+
+        }
+    }
+
+
+}
 
 /////////////////////////////////////////////////////////////////////////////////////
 
 public class virus_track_main {
 
     public static ArrayList<patient_db> patient_dbs;
+
+    public static RawVirusTrackApp VTA_Apple;
+    public static RawVirusTrackApp VTA_Android;
+    public static RawVirusTrackApp VTA_Library;
 
     public static void main(String[] args) throws ParseException, InterruptedException {
 
@@ -793,16 +896,24 @@ public class virus_track_main {
         //Test User: ali uzun 40 konak
 
         //Adaptor example here, Need main for User Requests.
-        //RawVirusTrackApp VTA_Samsung = new Samsung_VirusTrackAppBuild();
+        //RawVirusTrackApp VTA_Apple = new Apple_VirusTrackAppBuild();
+        //RawVirusTrackApp VTA_Android = new Android_VirusTrackAppBuild();
         //RawVirusTrackApp VTA_Library = new Library_VirusTrackAppBuild();
-        RawVirusTrackApp VTA_Apple = new Apple_VirusTrackAppBuild();
-        RawVirusTrackApp VTA_Android = new Android_VirusTrackAppBuild();
-        RawVirusTrackApp VTA_Library = new Library_VirusTrackAppBuild();
+
+        VTA_Apple = new Apple_VirusTrackAppBuild();
+        VTA_Android = new Android_VirusTrackAppBuild();
+        VTA_Library = new Library_VirusTrackAppBuild();
 
 
         //Need to call Facade of Main
 
+        AppleMainFacade appleTest = new AppleMainFacade();
+        AndroidMainFacade androidTest = new AndroidMainFacade();
+        LibraryMainFacade libraryTest = new LibraryMainFacade();
 
+        MainFacade mf = new MainFacade(VTA_Apple, VTA_Android, VTA_Library, appleTest, androidTest, libraryTest);
+
+        mf.Start();
 
         ////////////////////////////////////////////
         //This part is gibberish

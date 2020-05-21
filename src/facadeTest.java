@@ -1,13 +1,3 @@
-//Client
-class Computer
-{
-    CPU cpu = new CPU();
-    Memory mem = new Memory();
-    HDD hdd = new HDD();
-
-    ComputerFacade af = new ComputerFacade(cpu, mem, hdd);
-}
-
 
 //Facade, All composition // IT'S COMPOSITE PATTERN A-LIKE
 class ComputerFacade
@@ -90,6 +80,8 @@ public class facadeTest {
 
         ComputerFacade comp = new ComputerFacade(cpu, mem, hdd);
         comp.start();
+
+
 
     }
 }
