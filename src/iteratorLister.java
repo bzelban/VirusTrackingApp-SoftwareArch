@@ -39,11 +39,11 @@ class DatabaseIterator implements iterator
 }
 
 //////////////////////////////////////////////////////
-class Lister //Patient Lister.
+public class iteratorLister //Patient Lister.
 {
     patient_db patientDB;
 
-    public Lister(patient_db patientDB)
+    public iteratorLister(patient_db patientDB)
     {
         this.patientDB = patientDB;
     }
@@ -334,19 +334,4 @@ class Lister //Patient Lister.
 
 }
 
-public class iteratorTryOut {
 
-    public static void main(String[] args) {
-
-        patient_db patientDB = new patient_db();
-        ArrayList patientList = patientDB.getPatientList();
-
-        Lister lister = new Lister(patientDB);
-        //lister.printAll();
-        //lister.printBetweenAge();
-        //lister.printAllAddress();
-        //lister.printTotalPatients();
-        //lister.printMultipleQueries();
-
-    }
-}
