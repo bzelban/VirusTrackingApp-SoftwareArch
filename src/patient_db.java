@@ -6,14 +6,13 @@ import java.util.ArrayList;
 
 class patient_db{
 
-    private ArrayList<PatientClass> patientDB;
+    public ArrayList<PatientClass> patientDB;
 
     public patient_db()
     {
         patientDB = new ArrayList<>();
 
         //Adding Some patients
-        addPatient("testNAME", "testSURNAME", 99, "testADDRESS", false, false, false);
         addPatient("BERK","YILMAZ",23,"ADRESS",false,false,false);
         addPatient("BEDIRHAN ZIRAN","ELBAN",28,"BOSTANLI",true,false,false);
         addPatient("MERT","DOYURGAN",23,"BALCOVA",false,false,true);
@@ -27,7 +26,7 @@ class patient_db{
 
     public void addPatient(String NAME, String SURNAME, int AGE, String testADDRESS, boolean FEWER, boolean M_ACHE, boolean R_NOSE)
     {
-        PatientClass patient = new PatientClass(NAME, SURNAME, AGE, FEWER, M_ACHE, R_NOSE);
+        PatientClass patient = new PatientClass(NAME, SURNAME, AGE, testADDRESS, FEWER, M_ACHE, R_NOSE);
         patientDB.add(patient);
     }
 
@@ -57,8 +56,6 @@ class patient_db{
 
 
     }
-
-    //
 
 
     public DatabaseIterator createIterator()

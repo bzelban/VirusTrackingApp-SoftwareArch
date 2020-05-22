@@ -13,7 +13,7 @@ public class PatientClass {
     boolean M_ACHE;
     boolean R_NOSE;
 
-    public PatientClass(String name, String surname, int age, boolean fewer, boolean m_ache, boolean r_nose) {
+    public PatientClass(String NAME, String SURNAME, int AGE, String ADDRESS, boolean FEWER, boolean m_ache, boolean r_nose) {
         this.NAME = NAME;
         this.SURNAME = SURNAME;
         this.AGE = AGE;

@@ -387,8 +387,8 @@ class Apple_VirusTrackAppBuild extends RawVirusTrackApp implements NativeFramewo
     public void write() // This send data on patient_db to the system
     {
         //if Any of the patient has some health anomalies, cast postMessage(this.getNAME(), this.getSURNAME())
+        virus_track_main.lister.updatePatient(this.getNAME(), this.getSURNAME(), this.isTempFEWER(), this.isTempM_ACHE(), this.isTempR_NOSE());
 
-        //patient_db.updateStatus(virus_track_main.patient_dbs ,this.getNAME(), this.getSURNAME(), this.isTempFEWER(), this.isTempM_ACHE(), this.isTempR_NOSE());
 
         if(isTempFEWER() || isTempM_ACHE() || isTempR_NOSE())
         {
@@ -561,7 +561,7 @@ class Android_VirusTrackAppBuild extends RawVirusTrackApp implements NativeFrame
     {
         //if Any of the patient has some health anomalies, cast postMessage(this.getNAME(), this.getSURNAME())
 
-        //patient_db.updateStatus(virus_track_main.patient_dbs ,this.getNAME(), this.getSURNAME(), this.isTempFEWER(), this.isTempM_ACHE(), this.isTempR_NOSE());
+        virus_track_main.lister.updatePatient(this.getNAME(), this.getSURNAME(), this.isTempFEWER(), this.isTempM_ACHE(), this.isTempR_NOSE());
 
         if(isTempFEWER() || isTempM_ACHE() || isTempR_NOSE())
         {
@@ -879,11 +879,13 @@ class LibraryMainFacade
             {
                 System.out.println("List Menu ");
                 //app.receive();
+                virus_track_main.lister.printMultipleQueries();
             }
             else if(tempMenu == 2)
             {
                 System.out.println("New Patient Menu");
                 //app.send();
+                virus_track_main.lister.addPatient();
             }
             else if(tempMenu == 3)
             {
@@ -904,7 +906,11 @@ class LibraryMainFacade
 
 public class virus_track_main {
 
-    public static ArrayList<patient_db> patient_dbs;
+    //public static ArrayList<patient_db> patient_dbs;
+
+    static patient_db patient_dbs;
+    static ArrayList patientList;
+    static Lister lister;
 
     //public static RawVirusTrackApp VTA_Apple;
     //public static RawVirusTrackApp VTA_Android;
@@ -918,9 +924,11 @@ public class virus_track_main {
         //CellPhone iPhone = new AppleFactory.createApple("Apple", "iPhone 6");
         //CellPhone Galaxy = new SamsungFactory.createSamsung("Samsung", "Galaxy 5");
 
-        //Creating a Database
-        patient_dbs = new ArrayList<>();
+        //Creating a Database with iterator
         //patient_dbs = patient_db._createTable();
+        patient_dbs = new patient_db();
+        patientList = patient_dbs.getPatientList();
+        lister = new Lister(patient_dbs);
 
         //Adaptor example here, Need main for User Requests.
         //RawVirusTrackApp VTA_Apple = new Apple_VirusTrackAppBuild();
