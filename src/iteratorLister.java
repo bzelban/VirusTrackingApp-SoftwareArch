@@ -39,11 +39,11 @@ class DatabaseIterator implements iterator
 }
 
 //////////////////////////////////////////////////////
-public class iteratorLister //Patient Lister.
+class Lister //Patient Lister.
 {
     patient_db patientDB;
 
-    public iteratorLister(patient_db patientDB)
+    public Lister(patient_db patientDB)
     {
         this.patientDB = patientDB;
     }
@@ -334,4 +334,6 @@ public class iteratorLister //Patient Lister.
 
 }
 
+public class iteratorLister {
 
+}
