@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 class patient_db{
 
+    private static patient_db patient_dbInstance;
     public ArrayList<PatientClass> patientDB;
 
     public patient_db()
@@ -23,6 +24,14 @@ class patient_db{
         addPatient("Belma","Simsek",50,"Gaziemir",true,false,false);
 
     }
+
+    public static patient_db getInstance() {
+        if (patient_dbInstance == null) {
+            patient_dbInstance = new patient_db();
+        }
+        return patient_dbInstance;
+    }
+
 
     public void addPatient(String NAME, String SURNAME, int AGE, String testADDRESS, boolean FEWER, boolean M_ACHE, boolean R_NOSE)
     {
@@ -56,6 +65,8 @@ class patient_db{
 
 
     }
+
+
 
 
     public DatabaseIterator createIterator()
