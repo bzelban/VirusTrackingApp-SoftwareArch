@@ -242,6 +242,7 @@ class RawVirusTrackApp{ //Socket-like (SOURCE)
 
 }
 
+
 interface NativeFramework{ //SocketAdapter-like
     MobileApp buildForApple();
     MobileApp buildForAndroid();
@@ -252,11 +253,11 @@ interface NativeFramework{ //SocketAdapter-like
 // Class Adapter SOCKET-ADAPTER-IMPLEMENTATION-Like
 class Apple_VirusTrackAppBuild extends RawVirusTrackApp implements NativeFramework, SubjectInterface {
 
-    /*
+
     public Apple_VirusTrackAppBuild(List<LibraryAppObserver> observers) throws ParseException {
         this.observers = observers;
     } //This default constructor is for Matching Super
-    */
+
 
     public Apple_VirusTrackAppBuild() throws ParseException {
 
@@ -387,7 +388,7 @@ class Apple_VirusTrackAppBuild extends RawVirusTrackApp implements NativeFramewo
     {
         //if Any of the patient has some health anomalies, cast postMessage(this.getNAME(), this.getSURNAME())
 
-        patient_db.updateStatus(virus_track_main.patient_dbs ,this.getNAME(), this.getSURNAME(), this.isTempFEWER(), this.isTempM_ACHE(), this.isTempR_NOSE());
+        //patient_db.updateStatus(virus_track_main.patient_dbs ,this.getNAME(), this.getSURNAME(), this.isTempFEWER(), this.isTempM_ACHE(), this.isTempR_NOSE());
 
         if(isTempFEWER() || isTempM_ACHE() || isTempR_NOSE())
         {
@@ -560,7 +561,7 @@ class Android_VirusTrackAppBuild extends RawVirusTrackApp implements NativeFrame
     {
         //if Any of the patient has some health anomalies, cast postMessage(this.getNAME(), this.getSURNAME())
 
-        patient_db.updateStatus(virus_track_main.patient_dbs ,this.getNAME(), this.getSURNAME(), this.isTempFEWER(), this.isTempM_ACHE(), this.isTempR_NOSE());
+        //patient_db.updateStatus(virus_track_main.patient_dbs ,this.getNAME(), this.getSURNAME(), this.isTempFEWER(), this.isTempM_ACHE(), this.isTempR_NOSE());
 
         if(isTempFEWER() || isTempM_ACHE() || isTempR_NOSE())
         {
@@ -710,7 +711,7 @@ class Library_VirusTrackAppBuild extends RawVirusTrackApp implements NativeFrame
             setTempR_NOSE(false);
             System.out.println("Wrong input, DEFAULT FALSE");
         }
-        patient_db.addNewPatient(virus_track_main.patient_dbs, getNAME(), getSURNAME(), getAGE(), getADDRESS(), isTempFEWER(), isTempM_ACHE(), isTempR_NOSE());
+        //patient_db.addNewPatient(virus_track_main.patient_dbs, getNAME(), getSURNAME(), getAGE(), getADDRESS(), isTempFEWER(), isTempM_ACHE(), isTempR_NOSE());
 
     }
 
@@ -746,7 +747,7 @@ class Library_VirusTrackAppBuild extends RawVirusTrackApp implements NativeFrame
 
 //LibraryNotifier.io
 //  This part is for Observer Pattern
-interface SubjectInterface  //Subject-like
+interface SubjectInterface   //Subject-like
 {
     void register(LibraryAppObserver observer);
     void notifyObserver();
@@ -919,7 +920,7 @@ public class virus_track_main {
 
         //Creating a Database
         patient_dbs = new ArrayList<>();
-        patient_dbs = patient_db._createTable();
+        //patient_dbs = patient_db._createTable();
 
         //Adaptor example here, Need main for User Requests.
         //RawVirusTrackApp VTA_Apple = new Apple_VirusTrackAppBuild();
@@ -946,6 +947,7 @@ public class virus_track_main {
         //Can't show the observer as simulation, Sorry.
         //Because, some parts related to observer pattern is assigned as comment.
         //VTA_Apple.set() > postMessage() & VTA_Android.set > postMessage()
+        //Also we tried to extend chain interfaces to implement adapter but is not a solution for us.
 
 
         //Need to call Facade part //DONE
