@@ -1,9 +1,0 @@
-Singleton ile telefona yüklencek.. +++
-Adaptör ile uygulamalar (read,send..) oluşturulcak... +++
-Observer ile anamoliler check edilicek.// 
-
-adresi iteratorle yap,
-compozit isimler 25-60, 
-otomize facade ile olacak.
-
-
