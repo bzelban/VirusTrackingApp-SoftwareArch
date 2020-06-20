@@ -8,8 +8,7 @@
 /*
 // THE FACTORY
 // In here, 2 different factories creating specific phones.
-// TO-DO: Add Storage!
-// Note: Lecturer doesn't want this part. NEGATIVE!!!
+
 abstract class CellPhone {
     abstract public String displayBrand();
     abstract public String displayModel();
@@ -73,27 +72,7 @@ abstract class SamsungFactory{
         return null;
     }
 }
-////////////////////////////////////////////////////////////////////////////////////
-
-
-
-
-              (
-               )
-              (
-        /\  .-"""-.  /\
-       //\\/  ,,,  \//\\
-       |/\| ,;;;;;, |/\|
-       //\\\;-"""-;///\\
-      //  \/   .   \/  \\
-     (| ,-_| \ | / |_-, |)
-       //`__\.-.-./__`\\
-      // /.-(() ())-.\ \\
-     (\ |)   '---'   (| /)
-      ` (|           |) `
-        \)           (/
-*/
-
+///////////////////////////////////////////////////////////////////////////////////
 
 // The RawAppInc.
 // This part ports Raw Native Virus Track app to the specific phone also for the Library
@@ -444,18 +423,9 @@ class Apple_VirusTrackAppBuild extends RawVirusTrackApp implements NativeFramewo
 
 }
 
-//  TO-DO:
-//      Samsung_VirusTrackAppBuild
-//      Library_VirusTrackAppBuild
-//          NEEDED AFTER ADDING CLOCK TIME/DATE AND WRITE FUNCTION
-
 class Android_VirusTrackAppBuild extends RawVirusTrackApp implements NativeFramework, SubjectInterface {
 
-    /*
-    public Android_VirusTrackAppBuild(List<LibraryAppObserver> observers) throws ParseException {
-        this.observers = observers;
-    } //This default constructor is for Matching Super
-    */
+
 
     public Android_VirusTrackAppBuild() throws ParseException {
 
@@ -577,11 +547,9 @@ class Android_VirusTrackAppBuild extends RawVirusTrackApp implements NativeFrame
 
     public void set() // This send data on patient_db to the system
     {
-        //if Any of the patient has some health anomalies, cast postMessage(this.getNAME(), this.getSURNAME())
-
         virus_track_main.lister.updatePatient(this.getNAME(), this.getSURNAME(), this.isTempFEWER(), this.isTempM_ACHE(), this.isTempR_NOSE());
 
-        if(isTempFEWER() || isTempM_ACHE() || isTempR_NOSE())
+            if(isTempFEWER() || isTempM_ACHE() || isTempR_NOSE())
         {
             //postMessage(this.getNAME(), this.getSURNAME());
         }
@@ -655,13 +623,8 @@ class Library_VirusTrackAppBuild extends RawVirusTrackApp implements NativeFrame
         while(loopControl)
         {
 
-
         }
-
     }
-
-    // We also wanted to add a "You are away from main location, please go home" like notification
-    // but the time isn't enough for lazy students.
     public void send()
     {
 
@@ -729,7 +692,6 @@ class Library_VirusTrackAppBuild extends RawVirusTrackApp implements NativeFrame
             setTempR_NOSE(false);
             System.out.println("Wrong input, DEFAULT FALSE");
         }
-        //patient_db.addNewPatient(virus_track_main.patient_dbs, getNAME(), getSURNAME(), getAGE(), getADDRESS(), isTempFEWER(), isTempM_ACHE(), isTempR_NOSE());
 
     }
 
@@ -748,8 +710,6 @@ class Library_VirusTrackAppBuild extends RawVirusTrackApp implements NativeFrame
         {
             System.out.println(" Retrieving message: " + msg);
         }
-
-
     }
 
     @Override
@@ -758,9 +718,6 @@ class Library_VirusTrackAppBuild extends RawVirusTrackApp implements NativeFrame
         this.patients = patients;
     }
 }
-
-
-
 ///////////////////////////////////////////////////////////////////////////////////
 
 //LibraryNotifier.io
@@ -777,21 +734,7 @@ interface LibraryAppObserver //Observer
     void update();
     void setPatients(SubjectInterface patients);
 
-} //d
-
-
-/*
-                                                 \_______/
-                                             `.,-'\_____/`-.,'
-                                              /`..'\ _ /`.,'\
-                                             /  /`.,' `.,'\  \
-                                            /__/__/     \__\__\__
-                                            \  \  \     /  /  /
-                                             \  \,'`._,'`./  /
-                                              \,'`./___\,'`./
-                                             ,'`-./_____\,-'`.
-                                                 /       \
- */
+} 
 /////////////////////////////////////////////////////////////////////////////////////
 
 // Main_auto
@@ -809,8 +752,7 @@ class MainFacade
 
     public MainFacade(RawVirusTrackApp appleApp, RawVirusTrackApp androidApp, RawVirusTrackApp libraryApp, AppleMainFacade appleF, AndroidMainFacade androidF, LibraryMainFacade libraryF)
     {
-        //We have to cast as SocketAdapter Implementation to not corrupt our adapter pattern
-        //Or myBrain.exe not found (note from Bedirhan)
+
         this.appleApp = (Apple_VirusTrackAppBuild) appleApp;
         this.androidApp = (Android_VirusTrackAppBuild) androidApp;
         this.libraryApp = (Library_VirusTrackAppBuild) libraryApp;
@@ -857,9 +799,7 @@ class MainFacade
                     break;
             }
         }
-        //AppleF.AppleMenu(appleApp);
-        //AndroidF.AndroidMenu(androidApp);
-        //LibraryF.LibraryMenu(libraryApp);
+
     }
 
 
@@ -1295,12 +1235,6 @@ public class virus_track_main {
         patientList = patient_dbs.getPatientList();
         lister = new Lister(patient_dbs);
 
-        //Adaptor example here, Need main for User Requests.
-        //RawVirusTrackApp VTA_Apple = new Apple_VirusTrackAppBuild();
-        //RawVirusTrackApp VTA_Android = new Android_VirusTrackAppBuild();
-        //RawVirusTrackApp VTA_Library = new Library_VirusTrackAppBuild();
-
-
         //First creating different libraries as Observers
         RawVirusTrackApp VTA_Library0 = new Library_VirusTrackAppBuild();
         RawVirusTrackApp VTA_Library1 = new Library_VirusTrackAppBuild();
@@ -1312,15 +1246,6 @@ public class virus_track_main {
         RawVirusTrackApp VTA_Apple = new Apple_VirusTrackAppBuild();
         RawVirusTrackApp VTA_Android = new Android_VirusTrackAppBuild();
         RawVirusTrackApp VTA_Library = new Library_VirusTrackAppBuild();
-
-
-        //VTA_Apple.register(VTA_Library0);
-        //in java, something happened and something not works.
-        //Can't use the object part(like VTA_Apple.register()) if multiple implementations of interfaces.
-        //Can't show the observer as simulation, Sorry.
-        //Because, some parts related to observer pattern is assigned as comment.
-        //VTA_Apple.set() > postMessage() & VTA_Android.set > postMessage()
-        //Also we tried to extend chain interfaces to implement adapter but is not a solution for us.
 
 
         //Need to call Facade part //DONE
@@ -1342,38 +1267,3 @@ public class virus_track_main {
 
 
 }
-
-
-/*
-                         \_______/
-                     `.,-'\_____/`-.,'
-                      /`..'\ _ /`.,'\
-                     /  /`.,' `.,'\  \
-                    /__/__/     \__\__\__
-                    \  \  \     /  /  /
-                     \  \,'`._,'`./  /
-                      \,'`./___\,'`./
-                     ,'`-./_____\,-'`.
-                         /       \
- */
-////////////////////////////////////////////
-//This part is gibberish
-
-//Need Plots
-
-//Prologue
-//Meanwhile in Netherland
-
-
-//Act 1, Baking and Serving
-//Consumer will buy some phones
-//System.out.println("BestBuy Selling Samsung and Apple");
-
-
-//Act 2, Uvid-Strikes-Back
-//Ill people installing app on phone
-//  sending reports
-
-
-
-//Act 3, Health Ministry On Duty
